@@ -17,10 +17,42 @@ namespace SSH_Panel_V1
             InitializeComponent();
         }
 
+        #region loginButton
+
         string host;
         string password;
         string username;
         int port = 22;
+
+        private void btnSshLogin_Click(object sender, EventArgs e)
+        {
+            SshForm SshForm = new SshForm();
+
+            host = txtBoxHost.Text;
+            username = txtBoxUsername.Text;
+            password = txtBoxPassword.Text;
+
+            try
+            {
+                SSH.connect(host, username, password, port);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Er is iets fouts gegaan: " + ex.ToString());
+            }
+
+            if (SSH.client.IsConnected)
+            {
+                SshForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("er is iets fout gegaan");
+            }
+        }
+        #endregion loginButton
+
+        #region style
 
         private Point lastLocation;
         private bool mouseDown;
@@ -60,33 +92,6 @@ namespace SSH_Panel_V1
             mouseDown = false;
         }
 
-        private void btnSshLogin_Click(object sender, EventArgs e)
-        {
-            SshForm SshForm = new SshForm();
-
-            host = txtBoxHost.Text;
-            username = txtBoxUsername.Text;
-            password = txtBoxPassword.Text;
-
-            try
-            {
-                SSH.connect(host, username, password, port);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Er is iets fouts gegaan: " + ex.ToString());
-            }
-
-            if (SSH.client.IsConnected)
-            {
-                SshForm.Show();
-            }
-            else
-            {
-                MessageBox.Show("er is iets fout gegaan");
-            }
-        }
-
         private void lblMin_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
@@ -96,5 +101,8 @@ namespace SSH_Panel_V1
         {
             this.Close();
         }
+
+        #endregion style
+
     }
 }
