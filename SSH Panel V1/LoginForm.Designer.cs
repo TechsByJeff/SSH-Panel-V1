@@ -73,9 +73,9 @@
             this.panel1.Controls.Add(this.txtBoxUsername);
             this.panel1.Controls.Add(this.txtBoxPort);
             this.panel1.Controls.Add(this.txtBoxHost);
-            this.panel1.Location = new System.Drawing.Point(33, 83);
+            this.panel1.Location = new System.Drawing.Point(33, 93);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(508, 325);
+            this.panel1.Size = new System.Drawing.Size(508, 291);
             this.panel1.TabIndex = 0;
             // 
             // dGridSavedUsers

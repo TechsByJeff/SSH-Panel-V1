@@ -17,6 +17,8 @@ namespace SSH_Panel_V1
             InitializeComponent();
         }
 
+        #region Style
+
         private Point lastLocation;
         private bool mouseDown;
 
@@ -64,6 +66,8 @@ namespace SSH_Panel_V1
         {
             this.Close();
         }
+
+        #endregion Style
 
 
     }

@@ -30,11 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SshForm));
             this.pnlTopBar = new System.Windows.Forms.Panel();
+            this.lblMin = new System.Windows.Forms.Label();
+            this.lblClose = new System.Windows.Forms.Label();
             this.pnlBackgroundImage = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.txtBoxInput = new System.Windows.Forms.TextBox();
-            this.lblCommandText = new System.Windows.Forms.Label();
-            this.rTxtBoxOutput = new System.Windows.Forms.RichTextBox();
+            this.btnExecuteCommand = new System.Windows.Forms.Button();
+            this.btnCmd1 = new System.Windows.Forms.Button();
             this.btnReindexCatalogUrl = new System.Windows.Forms.Button();
             this.btnReindexProduct_Attribute = new System.Windows.Forms.Button();
             this.btnReindexStock = new System.Windows.Forms.Button();
@@ -44,15 +46,13 @@
             this.btnReindexCategory_Flat = new System.Windows.Forms.Button();
             this.btnReindexProduct_url = new System.Windows.Forms.Button();
             this.btnReindexCatalogSearchFullText = new System.Windows.Forms.Button();
-            this.btnCmd1 = new System.Windows.Forms.Button();
-            this.btnExecuteCommand = new System.Windows.Forms.Button();
-            this.lblMin = new System.Windows.Forms.Label();
-            this.lblClose = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.rTxtBoxOutput = new System.Windows.Forms.RichTextBox();
+            this.txtBoxInput = new System.Windows.Forms.TextBox();
+            this.lblCommandText = new System.Windows.Forms.Label();
             this.pnlTopBar.SuspendLayout();
             this.pnlBackgroundImage.SuspendLayout();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlTopBar
@@ -69,6 +69,32 @@
             this.pnlTopBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlTopBar_MouseMove);
             this.pnlTopBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlTopBar_MouseUp);
             // 
+            // lblMin
+            // 
+            this.lblMin.AutoSize = true;
+            this.lblMin.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMin.ForeColor = System.Drawing.Color.White;
+            this.lblMin.Location = new System.Drawing.Point(810, 9);
+            this.lblMin.Name = "lblMin";
+            this.lblMin.Size = new System.Drawing.Size(15, 13);
+            this.lblMin.TabIndex = 19;
+            this.lblMin.Text = "--";
+            this.lblMin.Click += new System.EventHandler(this.lblMin_Click);
+            // 
+            // lblClose
+            // 
+            this.lblClose.AutoSize = true;
+            this.lblClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClose.ForeColor = System.Drawing.Color.White;
+            this.lblClose.Location = new System.Drawing.Point(833, 9);
+            this.lblClose.Name = "lblClose";
+            this.lblClose.Size = new System.Drawing.Size(15, 13);
+            this.lblClose.TabIndex = 20;
+            this.lblClose.Text = "X";
+            this.lblClose.Click += new System.EventHandler(this.lblClose_Click);
+            // 
             // pnlBackgroundImage
             // 
             this.pnlBackgroundImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(51)))));
@@ -78,6 +104,16 @@
             this.pnlBackgroundImage.Name = "pnlBackgroundImage";
             this.pnlBackgroundImage.Size = new System.Drawing.Size(860, 174);
             this.pnlBackgroundImage.TabIndex = 2;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(0, -105);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(860, 279);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // panel2
             // 
@@ -96,40 +132,41 @@
             this.panel2.Controls.Add(this.rTxtBoxOutput);
             this.panel2.Controls.Add(this.txtBoxInput);
             this.panel2.Controls.Add(this.lblCommandText);
-            this.panel2.Location = new System.Drawing.Point(36, 133);
+            this.panel2.Location = new System.Drawing.Point(37, 133);
             this.panel2.Margin = new System.Windows.Forms.Padding(12);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(780, 407);
+            this.panel2.Size = new System.Drawing.Size(780, 394);
             this.panel2.TabIndex = 3;
             // 
-            // txtBoxInput
+            // btnExecuteCommand
             // 
-            this.txtBoxInput.Location = new System.Drawing.Point(153, 16);
-            this.txtBoxInput.Name = "txtBoxInput";
-            this.txtBoxInput.Size = new System.Drawing.Size(519, 20);
-            this.txtBoxInput.TabIndex = 9;
+            this.btnExecuteCommand.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(51)))));
+            this.btnExecuteCommand.FlatAppearance.BorderSize = 0;
+            this.btnExecuteCommand.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.btnExecuteCommand.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExecuteCommand.ForeColor = System.Drawing.Color.White;
+            this.btnExecuteCommand.Location = new System.Drawing.Point(678, 14);
+            this.btnExecuteCommand.Name = "btnExecuteCommand";
+            this.btnExecuteCommand.Size = new System.Drawing.Size(85, 23);
+            this.btnExecuteCommand.TabIndex = 26;
+            this.btnExecuteCommand.TabStop = false;
+            this.btnExecuteCommand.Text = "Uitvoeren";
+            this.btnExecuteCommand.UseVisualStyleBackColor = false;
             // 
-            // lblCommandText
+            // btnCmd1
             // 
-            this.lblCommandText.AutoSize = true;
-            this.lblCommandText.ForeColor = System.Drawing.Color.Black;
-            this.lblCommandText.Location = new System.Drawing.Point(15, 19);
-            this.lblCommandText.Name = "lblCommandText";
-            this.lblCommandText.Size = new System.Drawing.Size(132, 13);
-            this.lblCommandText.TabIndex = 8;
-            this.lblCommandText.Text = "Voer hier uw commando in";
-            // 
-            // rTxtBoxOutput
-            // 
-            this.rTxtBoxOutput.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.rTxtBoxOutput.Location = new System.Drawing.Point(153, 42);
-            this.rTxtBoxOutput.Name = "rTxtBoxOutput";
-            this.rTxtBoxOutput.ReadOnly = true;
-            this.rTxtBoxOutput.ShortcutsEnabled = false;
-            this.rTxtBoxOutput.Size = new System.Drawing.Size(610, 284);
-            this.rTxtBoxOutput.TabIndex = 15;
-            this.rTxtBoxOutput.TabStop = false;
-            this.rTxtBoxOutput.Text = "";
+            this.btnCmd1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(51)))));
+            this.btnCmd1.FlatAppearance.BorderSize = 0;
+            this.btnCmd1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.btnCmd1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCmd1.ForeColor = System.Drawing.Color.White;
+            this.btnCmd1.Location = new System.Drawing.Point(18, 42);
+            this.btnCmd1.Name = "btnCmd1";
+            this.btnCmd1.Size = new System.Drawing.Size(129, 23);
+            this.btnCmd1.TabIndex = 25;
+            this.btnCmd1.TabStop = false;
+            this.btnCmd1.Text = "reindex all";
+            this.btnCmd1.UseVisualStyleBackColor = false;
             // 
             // btnReindexCatalogUrl
             // 
@@ -266,71 +303,34 @@
             this.btnReindexCatalogSearchFullText.Text = "fulltext";
             this.btnReindexCatalogSearchFullText.UseVisualStyleBackColor = false;
             // 
-            // btnCmd1
+            // rTxtBoxOutput
             // 
-            this.btnCmd1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(51)))));
-            this.btnCmd1.FlatAppearance.BorderSize = 0;
-            this.btnCmd1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
-            this.btnCmd1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCmd1.ForeColor = System.Drawing.Color.White;
-            this.btnCmd1.Location = new System.Drawing.Point(18, 42);
-            this.btnCmd1.Name = "btnCmd1";
-            this.btnCmd1.Size = new System.Drawing.Size(129, 23);
-            this.btnCmd1.TabIndex = 25;
-            this.btnCmd1.TabStop = false;
-            this.btnCmd1.Text = "reindex all";
-            this.btnCmd1.UseVisualStyleBackColor = false;
+            this.rTxtBoxOutput.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.rTxtBoxOutput.Location = new System.Drawing.Point(153, 42);
+            this.rTxtBoxOutput.Name = "rTxtBoxOutput";
+            this.rTxtBoxOutput.ReadOnly = true;
+            this.rTxtBoxOutput.ShortcutsEnabled = false;
+            this.rTxtBoxOutput.Size = new System.Drawing.Size(610, 284);
+            this.rTxtBoxOutput.TabIndex = 15;
+            this.rTxtBoxOutput.TabStop = false;
+            this.rTxtBoxOutput.Text = "";
             // 
-            // btnExecuteCommand
+            // txtBoxInput
             // 
-            this.btnExecuteCommand.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(51)))));
-            this.btnExecuteCommand.FlatAppearance.BorderSize = 0;
-            this.btnExecuteCommand.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
-            this.btnExecuteCommand.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExecuteCommand.ForeColor = System.Drawing.Color.White;
-            this.btnExecuteCommand.Location = new System.Drawing.Point(678, 14);
-            this.btnExecuteCommand.Name = "btnExecuteCommand";
-            this.btnExecuteCommand.Size = new System.Drawing.Size(85, 23);
-            this.btnExecuteCommand.TabIndex = 26;
-            this.btnExecuteCommand.TabStop = false;
-            this.btnExecuteCommand.Text = "Uitvoeren";
-            this.btnExecuteCommand.UseVisualStyleBackColor = false;
+            this.txtBoxInput.Location = new System.Drawing.Point(153, 16);
+            this.txtBoxInput.Name = "txtBoxInput";
+            this.txtBoxInput.Size = new System.Drawing.Size(519, 20);
+            this.txtBoxInput.TabIndex = 9;
             // 
-            // lblMin
+            // lblCommandText
             // 
-            this.lblMin.AutoSize = true;
-            this.lblMin.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMin.ForeColor = System.Drawing.Color.White;
-            this.lblMin.Location = new System.Drawing.Point(810, 9);
-            this.lblMin.Name = "lblMin";
-            this.lblMin.Size = new System.Drawing.Size(15, 13);
-            this.lblMin.TabIndex = 19;
-            this.lblMin.Text = "--";
-            this.lblMin.Click += new System.EventHandler(this.lblMin_Click);
-            // 
-            // lblClose
-            // 
-            this.lblClose.AutoSize = true;
-            this.lblClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClose.ForeColor = System.Drawing.Color.White;
-            this.lblClose.Location = new System.Drawing.Point(833, 9);
-            this.lblClose.Name = "lblClose";
-            this.lblClose.Size = new System.Drawing.Size(15, 13);
-            this.lblClose.TabIndex = 20;
-            this.lblClose.Text = "X";
-            this.lblClose.Click += new System.EventHandler(this.lblClose_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, -105);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(860, 279);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.lblCommandText.AutoSize = true;
+            this.lblCommandText.ForeColor = System.Drawing.Color.Black;
+            this.lblCommandText.Location = new System.Drawing.Point(15, 19);
+            this.lblCommandText.Name = "lblCommandText";
+            this.lblCommandText.Size = new System.Drawing.Size(132, 13);
+            this.lblCommandText.TabIndex = 8;
+            this.lblCommandText.Text = "Voer hier uw commando in";
             // 
             // SshForm
             // 
@@ -346,9 +346,9 @@
             this.pnlTopBar.ResumeLayout(false);
             this.pnlTopBar.PerformLayout();
             this.pnlBackgroundImage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
