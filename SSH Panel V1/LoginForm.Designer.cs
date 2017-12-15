@@ -30,154 +30,288 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.lblLoginUsernameText = new System.Windows.Forms.Label();
-            this.lblLoginPassText = new System.Windows.Forms.Label();
+            this.dGridSavedUsers = new System.Windows.Forms.DataGridView();
+            this.btnSaveUserConfig = new System.Windows.Forms.Button();
             this.btnSshLogin = new System.Windows.Forms.Button();
+            this.btnLoadUserConfig = new System.Windows.Forms.Button();
+            this.lblLoginPortText = new System.Windows.Forms.Label();
+            this.lblLoginHostText = new System.Windows.Forms.Label();
             this.lblLoginText = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lblExit = new System.Windows.Forms.Label();
+            this.lblLoginPassText = new System.Windows.Forms.Label();
+            this.txtBoxPassword = new System.Windows.Forms.TextBox();
+            this.lblLoginUsernameText = new System.Windows.Forms.Label();
+            this.txtBoxUsername = new System.Windows.Forms.TextBox();
+            this.txtBoxPort = new System.Windows.Forms.TextBox();
+            this.txtBoxHost = new System.Windows.Forms.TextBox();
+            this.lblClose = new System.Windows.Forms.Label();
+            this.lblMin = new System.Windows.Forms.Label();
+            this.pnlTopBar = new System.Windows.Forms.Panel();
             this.lblMinimize = new System.Windows.Forms.Label();
+            this.lblExit = new System.Windows.Forms.Label();
+            this.pnlBackgroundImage = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dGridSavedUsers)).BeginInit();
+            this.pnlTopBar.SuspendLayout();
+            this.pnlBackgroundImage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Gray;
-            this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.dGridSavedUsers);
+            this.panel1.Controls.Add(this.btnSaveUserConfig);
+            this.panel1.Controls.Add(this.btnSshLogin);
+            this.panel1.Controls.Add(this.btnLoadUserConfig);
+            this.panel1.Controls.Add(this.lblLoginPortText);
+            this.panel1.Controls.Add(this.lblLoginHostText);
+            this.panel1.Controls.Add(this.lblLoginText);
+            this.panel1.Controls.Add(this.lblLoginPassText);
+            this.panel1.Controls.Add(this.txtBoxPassword);
+            this.panel1.Controls.Add(this.lblLoginUsernameText);
+            this.panel1.Controls.Add(this.txtBoxUsername);
+            this.panel1.Controls.Add(this.txtBoxPort);
+            this.panel1.Controls.Add(this.txtBoxHost);
+            this.panel1.Location = new System.Drawing.Point(33, 83);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(293, 303);
+            this.panel1.Size = new System.Drawing.Size(508, 325);
             this.panel1.TabIndex = 0;
             // 
-            // panel2
+            // dGridSavedUsers
             // 
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.lblMinimize);
-            this.panel2.Controls.Add(this.lblExit);
-            this.panel2.Controls.Add(this.btnSshLogin);
-            this.panel2.Controls.Add(this.lblLoginUsernameText);
-            this.panel2.Controls.Add(this.lblLoginText);
-            this.panel2.Controls.Add(this.lblLoginPassText);
-            this.panel2.Controls.Add(this.textBox2);
-            this.panel2.Controls.Add(this.textBox1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(216, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(361, 303);
-            this.panel2.TabIndex = 1;
+            this.dGridSavedUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dGridSavedUsers.Location = new System.Drawing.Point(292, 73);
+            this.dGridSavedUsers.Name = "dGridSavedUsers";
+            this.dGridSavedUsers.Size = new System.Drawing.Size(203, 169);
+            this.dGridSavedUsers.TabIndex = 6;
             // 
-            // textBox1
+            // btnSaveUserConfig
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(83, 112);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(266, 29);
-            this.textBox1.TabIndex = 0;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(83, 184);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PasswordChar = '*';
-            this.textBox2.Size = new System.Drawing.Size(266, 29);
-            this.textBox2.TabIndex = 0;
-            // 
-            // lblLoginUsernameText
-            // 
-            this.lblLoginUsernameText.AutoSize = true;
-            this.lblLoginUsernameText.BackColor = System.Drawing.Color.Transparent;
-            this.lblLoginUsernameText.Location = new System.Drawing.Point(80, 96);
-            this.lblLoginUsernameText.Name = "lblLoginUsernameText";
-            this.lblLoginUsernameText.Size = new System.Drawing.Size(84, 13);
-            this.lblLoginUsernameText.TabIndex = 1;
-            this.lblLoginUsernameText.Text = "Gebruikersnaam";
-            // 
-            // lblLoginPassText
-            // 
-            this.lblLoginPassText.AutoSize = true;
-            this.lblLoginPassText.Location = new System.Drawing.Point(80, 168);
-            this.lblLoginPassText.Name = "lblLoginPassText";
-            this.lblLoginPassText.Size = new System.Drawing.Size(68, 13);
-            this.lblLoginPassText.TabIndex = 1;
-            this.lblLoginPassText.Text = "Wachtwoord";
+            this.btnSaveUserConfig.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(51)))));
+            this.btnSaveUserConfig.FlatAppearance.BorderSize = 0;
+            this.btnSaveUserConfig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSaveUserConfig.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveUserConfig.ForeColor = System.Drawing.Color.White;
+            this.btnSaveUserConfig.Location = new System.Drawing.Point(396, 248);
+            this.btnSaveUserConfig.Name = "btnSaveUserConfig";
+            this.btnSaveUserConfig.Size = new System.Drawing.Size(99, 33);
+            this.btnSaveUserConfig.TabIndex = 8;
+            this.btnSaveUserConfig.Text = "Save";
+            this.btnSaveUserConfig.UseVisualStyleBackColor = false;
             // 
             // btnSshLogin
             // 
-            this.btnSshLogin.BackColor = System.Drawing.Color.Green;
-            this.btnSshLogin.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSshLogin.BackgroundImage")));
+            this.btnSshLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(51)))));
             this.btnSshLogin.FlatAppearance.BorderSize = 0;
             this.btnSshLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSshLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSshLogin.ForeColor = System.Drawing.Color.White;
-            this.btnSshLogin.Location = new System.Drawing.Point(218, 252);
+            this.btnSshLogin.Location = new System.Drawing.Point(15, 248);
             this.btnSshLogin.Name = "btnSshLogin";
-            this.btnSshLogin.Size = new System.Drawing.Size(131, 39);
-            this.btnSshLogin.TabIndex = 2;
+            this.btnSshLogin.Size = new System.Drawing.Size(99, 33);
+            this.btnSshLogin.TabIndex = 5;
             this.btnSshLogin.Text = "Login";
             this.btnSshLogin.UseVisualStyleBackColor = false;
             this.btnSshLogin.Click += new System.EventHandler(this.btnSshLogin_Click);
             // 
+            // btnLoadUserConfig
+            // 
+            this.btnLoadUserConfig.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(51)))));
+            this.btnLoadUserConfig.FlatAppearance.BorderSize = 0;
+            this.btnLoadUserConfig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLoadUserConfig.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLoadUserConfig.ForeColor = System.Drawing.Color.White;
+            this.btnLoadUserConfig.Location = new System.Drawing.Point(292, 248);
+            this.btnLoadUserConfig.Name = "btnLoadUserConfig";
+            this.btnLoadUserConfig.Size = new System.Drawing.Size(98, 33);
+            this.btnLoadUserConfig.TabIndex = 7;
+            this.btnLoadUserConfig.Text = "Load";
+            this.btnLoadUserConfig.UseVisualStyleBackColor = false;
+            // 
+            // lblLoginPortText
+            // 
+            this.lblLoginPortText.AutoSize = true;
+            this.lblLoginPortText.BackColor = System.Drawing.Color.Transparent;
+            this.lblLoginPortText.Location = new System.Drawing.Point(240, 57);
+            this.lblLoginPortText.Name = "lblLoginPortText";
+            this.lblLoginPortText.Size = new System.Drawing.Size(32, 13);
+            this.lblLoginPortText.TabIndex = 9;
+            this.lblLoginPortText.Text = "Poort";
+            // 
+            // lblLoginHostText
+            // 
+            this.lblLoginHostText.AutoSize = true;
+            this.lblLoginHostText.BackColor = System.Drawing.Color.Transparent;
+            this.lblLoginHostText.Location = new System.Drawing.Point(9, 57);
+            this.lblLoginHostText.Name = "lblLoginHostText";
+            this.lblLoginHostText.Size = new System.Drawing.Size(29, 13);
+            this.lblLoginHostText.TabIndex = 10;
+            this.lblLoginHostText.Text = "Host";
+            // 
             // lblLoginText
             // 
             this.lblLoginText.AutoSize = true;
-            this.lblLoginText.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLoginText.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.lblLoginText.Location = new System.Drawing.Point(76, 40);
+            this.lblLoginText.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLoginText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(51)))));
+            this.lblLoginText.Location = new System.Drawing.Point(5, 10);
             this.lblLoginText.Name = "lblLoginText";
             this.lblLoginText.Size = new System.Drawing.Size(101, 37);
-            this.lblLoginText.TabIndex = 3;
+            this.lblLoginText.TabIndex = 14;
             this.lblLoginText.Text = "Login";
             // 
-            // pictureBox1
+            // lblLoginPassText
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(3, 8);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(283, 101);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.lblLoginPassText.AutoSize = true;
+            this.lblLoginPassText.Location = new System.Drawing.Point(12, 177);
+            this.lblLoginPassText.Name = "lblLoginPassText";
+            this.lblLoginPassText.Size = new System.Drawing.Size(68, 13);
+            this.lblLoginPassText.TabIndex = 11;
+            this.lblLoginPassText.Text = "Wachtwoord";
             // 
-            // lblExit
+            // txtBoxPassword
             // 
-            this.lblExit.AutoSize = true;
-            this.lblExit.Location = new System.Drawing.Point(335, 9);
-            this.lblExit.Name = "lblExit";
-            this.lblExit.Size = new System.Drawing.Size(14, 13);
-            this.lblExit.TabIndex = 4;
-            this.lblExit.Text = "X";
+            this.txtBoxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxPassword.Location = new System.Drawing.Point(15, 193);
+            this.txtBoxPassword.Name = "txtBoxPassword";
+            this.txtBoxPassword.PasswordChar = '*';
+            this.txtBoxPassword.Size = new System.Drawing.Size(266, 29);
+            this.txtBoxPassword.TabIndex = 4;
+            // 
+            // lblLoginUsernameText
+            // 
+            this.lblLoginUsernameText.AutoSize = true;
+            this.lblLoginUsernameText.Location = new System.Drawing.Point(12, 117);
+            this.lblLoginUsernameText.Name = "lblLoginUsernameText";
+            this.lblLoginUsernameText.Size = new System.Drawing.Size(84, 13);
+            this.lblLoginUsernameText.TabIndex = 12;
+            this.lblLoginUsernameText.Text = "Gebruikersnaam";
+            // 
+            // txtBoxUsername
+            // 
+            this.txtBoxUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxUsername.Location = new System.Drawing.Point(15, 133);
+            this.txtBoxUsername.Name = "txtBoxUsername";
+            this.txtBoxUsername.Size = new System.Drawing.Size(266, 29);
+            this.txtBoxUsername.TabIndex = 3;
+            // 
+            // txtBoxPort
+            // 
+            this.txtBoxPort.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxPort.Location = new System.Drawing.Point(242, 73);
+            this.txtBoxPort.Name = "txtBoxPort";
+            this.txtBoxPort.Size = new System.Drawing.Size(39, 29);
+            this.txtBoxPort.TabIndex = 2;
+            // 
+            // txtBoxHost
+            // 
+            this.txtBoxHost.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxHost.Location = new System.Drawing.Point(12, 73);
+            this.txtBoxHost.Name = "txtBoxHost";
+            this.txtBoxHost.Size = new System.Drawing.Size(224, 29);
+            this.txtBoxHost.TabIndex = 1;
+            // 
+            // lblClose
+            // 
+            this.lblClose.AutoSize = true;
+            this.lblClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClose.ForeColor = System.Drawing.Color.White;
+            this.lblClose.Location = new System.Drawing.Point(549, 9);
+            this.lblClose.Name = "lblClose";
+            this.lblClose.Size = new System.Drawing.Size(15, 13);
+            this.lblClose.TabIndex = 16;
+            this.lblClose.Text = "X";
+            this.lblClose.Click += new System.EventHandler(this.lblClose_Click);
+            // 
+            // lblMin
+            // 
+            this.lblMin.AutoSize = true;
+            this.lblMin.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMin.ForeColor = System.Drawing.Color.White;
+            this.lblMin.Location = new System.Drawing.Point(526, 9);
+            this.lblMin.Name = "lblMin";
+            this.lblMin.Size = new System.Drawing.Size(15, 13);
+            this.lblMin.TabIndex = 15;
+            this.lblMin.Text = "--";
+            this.lblMin.Click += new System.EventHandler(this.lblMin_Click);
+            // 
+            // pnlTopBar
+            // 
+            this.pnlTopBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(51)))));
+            this.pnlTopBar.Controls.Add(this.lblMinimize);
+            this.pnlTopBar.Controls.Add(this.lblMin);
+            this.pnlTopBar.Controls.Add(this.lblExit);
+            this.pnlTopBar.Controls.Add(this.lblClose);
+            this.pnlTopBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTopBar.Location = new System.Drawing.Point(0, 0);
+            this.pnlTopBar.Name = "pnlTopBar";
+            this.pnlTopBar.Size = new System.Drawing.Size(577, 32);
+            this.pnlTopBar.TabIndex = 17;
+            this.pnlTopBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlTopBar_MouseDown);
+            this.pnlTopBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlTopBar_MouseMove);
+            this.pnlTopBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlTopBar_MouseUp);
             // 
             // lblMinimize
             // 
             this.lblMinimize.AutoSize = true;
-            this.lblMinimize.Location = new System.Drawing.Point(315, 8);
+            this.lblMinimize.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMinimize.ForeColor = System.Drawing.Color.White;
+            this.lblMinimize.Location = new System.Drawing.Point(810, 9);
             this.lblMinimize.Name = "lblMinimize";
-            this.lblMinimize.Size = new System.Drawing.Size(13, 13);
-            this.lblMinimize.TabIndex = 4;
+            this.lblMinimize.Size = new System.Drawing.Size(15, 13);
+            this.lblMinimize.TabIndex = 17;
             this.lblMinimize.Text = "--";
+            // 
+            // lblExit
+            // 
+            this.lblExit.AutoSize = true;
+            this.lblExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblExit.ForeColor = System.Drawing.Color.White;
+            this.lblExit.Location = new System.Drawing.Point(833, 9);
+            this.lblExit.Name = "lblExit";
+            this.lblExit.Size = new System.Drawing.Size(15, 13);
+            this.lblExit.TabIndex = 18;
+            this.lblExit.Text = "X";
+            // 
+            // pnlBackgroundImage
+            // 
+            this.pnlBackgroundImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(51)))));
+            this.pnlBackgroundImage.Controls.Add(this.pictureBox1);
+            this.pnlBackgroundImage.Location = new System.Drawing.Point(0, 25);
+            this.pnlBackgroundImage.Name = "pnlBackgroundImage";
+            this.pnlBackgroundImage.Size = new System.Drawing.Size(577, 112);
+            this.pnlBackgroundImage.TabIndex = 18;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(0, -97);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(577, 209);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(577, 303);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(215)))), ((int)(((byte)(215)))));
+            this.ClientSize = new System.Drawing.Size(577, 407);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.pnlBackgroundImage);
+            this.Controls.Add(this.pnlTopBar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "LoginForm";
             this.Text = "LoginForm";
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dGridSavedUsers)).EndInit();
+            this.pnlTopBar.ResumeLayout(false);
+            this.pnlTopBar.PerformLayout();
+            this.pnlBackgroundImage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -186,15 +320,25 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button btnLoadUserConfig;
+        private System.Windows.Forms.Label lblLoginPortText;
+        private System.Windows.Forms.Label lblLoginHostText;
         private System.Windows.Forms.Label lblLoginText;
-        private System.Windows.Forms.Button btnSshLogin;
         private System.Windows.Forms.Label lblLoginPassText;
+        private System.Windows.Forms.TextBox txtBoxPassword;
         private System.Windows.Forms.Label lblLoginUsernameText;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TextBox txtBoxUsername;
+        private System.Windows.Forms.TextBox txtBoxPort;
+        private System.Windows.Forms.TextBox txtBoxHost;
+        private System.Windows.Forms.DataGridView dGridSavedUsers;
+        private System.Windows.Forms.Button btnSaveUserConfig;
+        private System.Windows.Forms.Button btnSshLogin;
+        private System.Windows.Forms.Label lblClose;
+        private System.Windows.Forms.Label lblMin;
+        private System.Windows.Forms.Panel pnlTopBar;
         private System.Windows.Forms.Label lblMinimize;
         private System.Windows.Forms.Label lblExit;
+        private System.Windows.Forms.Panel pnlBackgroundImage;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
