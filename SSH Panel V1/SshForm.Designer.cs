@@ -305,6 +305,7 @@
             // 
             // rTxtBoxOutput
             // 
+            this.rTxtBoxOutput.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.rTxtBoxOutput.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.rTxtBoxOutput.Location = new System.Drawing.Point(153, 42);
             this.rTxtBoxOutput.Name = "rTxtBoxOutput";
