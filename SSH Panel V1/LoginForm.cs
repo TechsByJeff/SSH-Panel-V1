@@ -43,6 +43,7 @@ namespace SSH_Panel_V1
 
             if (SSH.client.IsConnected)
             {
+                this.Hide();
                 SshForm.Show();
             }
             else
@@ -50,6 +51,7 @@ namespace SSH_Panel_V1
                 MessageBox.Show("er is iets fout gegaan");
             }
         }
+
         #endregion loginButton
 
         #region style

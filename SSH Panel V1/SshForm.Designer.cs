@@ -34,9 +34,9 @@
             this.lblClose = new System.Windows.Forms.Label();
             this.pnlBackgroundImage = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.pnlIndex = new System.Windows.Forms.Panel();
             this.btnExecuteCommand = new System.Windows.Forms.Button();
-            this.btnCmd1 = new System.Windows.Forms.Button();
+            this.btnReindexAll = new System.Windows.Forms.Button();
             this.btnReindexCatalogUrl = new System.Windows.Forms.Button();
             this.btnReindexProduct_Attribute = new System.Windows.Forms.Button();
             this.btnReindexStock = new System.Windows.Forms.Button();
@@ -44,15 +44,19 @@
             this.btnReindexCategory_product = new System.Windows.Forms.Button();
             this.btnReindexProduct_Flat = new System.Windows.Forms.Button();
             this.btnReindexCategory_Flat = new System.Windows.Forms.Button();
-            this.btnReindexProduct_url = new System.Windows.Forms.Button();
             this.btnReindexCatalogSearchFullText = new System.Windows.Forms.Button();
             this.rTxtBoxOutput = new System.Windows.Forms.RichTextBox();
             this.txtBoxInput = new System.Windows.Forms.TextBox();
             this.lblCommandText = new System.Windows.Forms.Label();
+            this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.pnlTopBar.SuspendLayout();
             this.pnlBackgroundImage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel2.SuspendLayout();
+            this.pnlIndex.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlTopBar
@@ -115,28 +119,31 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // panel2
+            // pnlIndex
             // 
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.btnExecuteCommand);
-            this.panel2.Controls.Add(this.btnCmd1);
-            this.panel2.Controls.Add(this.btnReindexCatalogUrl);
-            this.panel2.Controls.Add(this.btnReindexProduct_Attribute);
-            this.panel2.Controls.Add(this.btnReindexStock);
-            this.panel2.Controls.Add(this.btnReindexProduct_price);
-            this.panel2.Controls.Add(this.btnReindexCategory_product);
-            this.panel2.Controls.Add(this.btnReindexProduct_Flat);
-            this.panel2.Controls.Add(this.btnReindexCategory_Flat);
-            this.panel2.Controls.Add(this.btnReindexProduct_url);
-            this.panel2.Controls.Add(this.btnReindexCatalogSearchFullText);
-            this.panel2.Controls.Add(this.rTxtBoxOutput);
-            this.panel2.Controls.Add(this.txtBoxInput);
-            this.panel2.Controls.Add(this.lblCommandText);
-            this.panel2.Location = new System.Drawing.Point(37, 133);
-            this.panel2.Margin = new System.Windows.Forms.Padding(12);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(780, 394);
-            this.panel2.TabIndex = 3;
+            this.pnlIndex.AutoScroll = true;
+            this.pnlIndex.AutoSize = true;
+            this.pnlIndex.BackColor = System.Drawing.Color.White;
+            this.pnlIndex.Controls.Add(this.materialLabel1);
+            this.pnlIndex.Controls.Add(this.progressBar1);
+            this.pnlIndex.Controls.Add(this.btnExecuteCommand);
+            this.pnlIndex.Controls.Add(this.btnReindexAll);
+            this.pnlIndex.Controls.Add(this.btnReindexCatalogUrl);
+            this.pnlIndex.Controls.Add(this.btnReindexProduct_Attribute);
+            this.pnlIndex.Controls.Add(this.btnReindexStock);
+            this.pnlIndex.Controls.Add(this.btnReindexProduct_price);
+            this.pnlIndex.Controls.Add(this.btnReindexCategory_product);
+            this.pnlIndex.Controls.Add(this.btnReindexProduct_Flat);
+            this.pnlIndex.Controls.Add(this.btnReindexCategory_Flat);
+            this.pnlIndex.Controls.Add(this.btnReindexCatalogSearchFullText);
+            this.pnlIndex.Controls.Add(this.rTxtBoxOutput);
+            this.pnlIndex.Controls.Add(this.txtBoxInput);
+            this.pnlIndex.Controls.Add(this.lblCommandText);
+            this.pnlIndex.Location = new System.Drawing.Point(0, 0);
+            this.pnlIndex.Margin = new System.Windows.Forms.Padding(12);
+            this.pnlIndex.Name = "pnlIndex";
+            this.pnlIndex.Size = new System.Drawing.Size(800, 372);
+            this.pnlIndex.TabIndex = 3;
             // 
             // btnExecuteCommand
             // 
@@ -152,21 +159,23 @@
             this.btnExecuteCommand.TabStop = false;
             this.btnExecuteCommand.Text = "Uitvoeren";
             this.btnExecuteCommand.UseVisualStyleBackColor = false;
+            this.btnExecuteCommand.Click += new System.EventHandler(this.btnExecuteCommand_Click);
             // 
-            // btnCmd1
+            // btnReindexAll
             // 
-            this.btnCmd1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(51)))));
-            this.btnCmd1.FlatAppearance.BorderSize = 0;
-            this.btnCmd1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
-            this.btnCmd1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCmd1.ForeColor = System.Drawing.Color.White;
-            this.btnCmd1.Location = new System.Drawing.Point(18, 42);
-            this.btnCmd1.Name = "btnCmd1";
-            this.btnCmd1.Size = new System.Drawing.Size(129, 23);
-            this.btnCmd1.TabIndex = 25;
-            this.btnCmd1.TabStop = false;
-            this.btnCmd1.Text = "reindex all";
-            this.btnCmd1.UseVisualStyleBackColor = false;
+            this.btnReindexAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(51)))));
+            this.btnReindexAll.FlatAppearance.BorderSize = 0;
+            this.btnReindexAll.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.btnReindexAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReindexAll.ForeColor = System.Drawing.Color.White;
+            this.btnReindexAll.Location = new System.Drawing.Point(18, 71);
+            this.btnReindexAll.Name = "btnReindexAll";
+            this.btnReindexAll.Size = new System.Drawing.Size(129, 23);
+            this.btnReindexAll.TabIndex = 25;
+            this.btnReindexAll.TabStop = false;
+            this.btnReindexAll.Text = "reindex all";
+            this.btnReindexAll.UseVisualStyleBackColor = false;
+            this.btnReindexAll.Click += new System.EventHandler(this.enterCommand);
             // 
             // btnReindexCatalogUrl
             // 
@@ -175,13 +184,14 @@
             this.btnReindexCatalogUrl.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnReindexCatalogUrl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReindexCatalogUrl.ForeColor = System.Drawing.Color.White;
-            this.btnReindexCatalogUrl.Location = new System.Drawing.Point(18, 274);
+            this.btnReindexCatalogUrl.Location = new System.Drawing.Point(18, 303);
             this.btnReindexCatalogUrl.Name = "btnReindexCatalogUrl";
             this.btnReindexCatalogUrl.Size = new System.Drawing.Size(129, 23);
             this.btnReindexCatalogUrl.TabIndex = 16;
             this.btnReindexCatalogUrl.TabStop = false;
             this.btnReindexCatalogUrl.Text = "catalog_url";
             this.btnReindexCatalogUrl.UseVisualStyleBackColor = false;
+            this.btnReindexCatalogUrl.Click += new System.EventHandler(this.enterCommand);
             // 
             // btnReindexProduct_Attribute
             // 
@@ -190,13 +200,14 @@
             this.btnReindexProduct_Attribute.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnReindexProduct_Attribute.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReindexProduct_Attribute.ForeColor = System.Drawing.Color.White;
-            this.btnReindexProduct_Attribute.Location = new System.Drawing.Point(18, 71);
+            this.btnReindexProduct_Attribute.Location = new System.Drawing.Point(18, 100);
             this.btnReindexProduct_Attribute.Name = "btnReindexProduct_Attribute";
             this.btnReindexProduct_Attribute.Size = new System.Drawing.Size(129, 23);
             this.btnReindexProduct_Attribute.TabIndex = 17;
             this.btnReindexProduct_Attribute.TabStop = false;
             this.btnReindexProduct_Attribute.Text = "product_attribute";
             this.btnReindexProduct_Attribute.UseVisualStyleBackColor = false;
+            this.btnReindexProduct_Attribute.Click += new System.EventHandler(this.enterCommand);
             // 
             // btnReindexStock
             // 
@@ -205,13 +216,14 @@
             this.btnReindexStock.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnReindexStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReindexStock.ForeColor = System.Drawing.Color.White;
-            this.btnReindexStock.Location = new System.Drawing.Point(18, 303);
+            this.btnReindexStock.Location = new System.Drawing.Point(18, 158);
             this.btnReindexStock.Name = "btnReindexStock";
             this.btnReindexStock.Size = new System.Drawing.Size(129, 23);
             this.btnReindexStock.TabIndex = 18;
             this.btnReindexStock.TabStop = false;
             this.btnReindexStock.Text = "stock";
             this.btnReindexStock.UseVisualStyleBackColor = false;
+            this.btnReindexStock.Click += new System.EventHandler(this.enterCommand);
             // 
             // btnReindexProduct_price
             // 
@@ -220,13 +232,14 @@
             this.btnReindexProduct_price.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnReindexProduct_price.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReindexProduct_price.ForeColor = System.Drawing.Color.White;
-            this.btnReindexProduct_price.Location = new System.Drawing.Point(18, 100);
+            this.btnReindexProduct_price.Location = new System.Drawing.Point(18, 129);
             this.btnReindexProduct_price.Name = "btnReindexProduct_price";
             this.btnReindexProduct_price.Size = new System.Drawing.Size(129, 23);
             this.btnReindexProduct_price.TabIndex = 19;
             this.btnReindexProduct_price.TabStop = false;
             this.btnReindexProduct_price.Text = "product_price";
             this.btnReindexProduct_price.UseVisualStyleBackColor = false;
+            this.btnReindexProduct_price.Click += new System.EventHandler(this.enterCommand);
             // 
             // btnReindexCategory_product
             // 
@@ -235,13 +248,14 @@
             this.btnReindexCategory_product.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnReindexCategory_product.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReindexCategory_product.ForeColor = System.Drawing.Color.White;
-            this.btnReindexCategory_product.Location = new System.Drawing.Point(18, 216);
+            this.btnReindexCategory_product.Location = new System.Drawing.Point(18, 245);
             this.btnReindexCategory_product.Name = "btnReindexCategory_product";
             this.btnReindexCategory_product.Size = new System.Drawing.Size(129, 23);
             this.btnReindexCategory_product.TabIndex = 20;
             this.btnReindexCategory_product.TabStop = false;
             this.btnReindexCategory_product.Text = "category_product";
             this.btnReindexCategory_product.UseVisualStyleBackColor = false;
+            this.btnReindexCategory_product.Click += new System.EventHandler(this.enterCommand);
             // 
             // btnReindexProduct_Flat
             // 
@@ -250,13 +264,14 @@
             this.btnReindexProduct_Flat.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnReindexProduct_Flat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReindexProduct_Flat.ForeColor = System.Drawing.Color.White;
-            this.btnReindexProduct_Flat.Location = new System.Drawing.Point(18, 158);
+            this.btnReindexProduct_Flat.Location = new System.Drawing.Point(18, 187);
             this.btnReindexProduct_Flat.Name = "btnReindexProduct_Flat";
             this.btnReindexProduct_Flat.Size = new System.Drawing.Size(129, 23);
             this.btnReindexProduct_Flat.TabIndex = 21;
             this.btnReindexProduct_Flat.TabStop = false;
             this.btnReindexProduct_Flat.Text = "product_flat";
             this.btnReindexProduct_Flat.UseVisualStyleBackColor = false;
+            this.btnReindexProduct_Flat.Click += new System.EventHandler(this.enterCommand);
             // 
             // btnReindexCategory_Flat
             // 
@@ -265,28 +280,14 @@
             this.btnReindexCategory_Flat.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnReindexCategory_Flat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReindexCategory_Flat.ForeColor = System.Drawing.Color.White;
-            this.btnReindexCategory_Flat.Location = new System.Drawing.Point(18, 187);
+            this.btnReindexCategory_Flat.Location = new System.Drawing.Point(18, 216);
             this.btnReindexCategory_Flat.Name = "btnReindexCategory_Flat";
             this.btnReindexCategory_Flat.Size = new System.Drawing.Size(129, 23);
             this.btnReindexCategory_Flat.TabIndex = 22;
             this.btnReindexCategory_Flat.TabStop = false;
             this.btnReindexCategory_Flat.Text = "category_flat";
             this.btnReindexCategory_Flat.UseVisualStyleBackColor = false;
-            // 
-            // btnReindexProduct_url
-            // 
-            this.btnReindexProduct_url.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(51)))));
-            this.btnReindexProduct_url.FlatAppearance.BorderSize = 0;
-            this.btnReindexProduct_url.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
-            this.btnReindexProduct_url.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReindexProduct_url.ForeColor = System.Drawing.Color.White;
-            this.btnReindexProduct_url.Location = new System.Drawing.Point(18, 129);
-            this.btnReindexProduct_url.Name = "btnReindexProduct_url";
-            this.btnReindexProduct_url.Size = new System.Drawing.Size(129, 23);
-            this.btnReindexProduct_url.TabIndex = 23;
-            this.btnReindexProduct_url.TabStop = false;
-            this.btnReindexProduct_url.Text = "product_url";
-            this.btnReindexProduct_url.UseVisualStyleBackColor = false;
+            this.btnReindexCategory_Flat.Click += new System.EventHandler(this.enterCommand);
             // 
             // btnReindexCatalogSearchFullText
             // 
@@ -295,23 +296,24 @@
             this.btnReindexCatalogSearchFullText.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnReindexCatalogSearchFullText.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReindexCatalogSearchFullText.ForeColor = System.Drawing.Color.White;
-            this.btnReindexCatalogSearchFullText.Location = new System.Drawing.Point(18, 245);
+            this.btnReindexCatalogSearchFullText.Location = new System.Drawing.Point(18, 274);
             this.btnReindexCatalogSearchFullText.Name = "btnReindexCatalogSearchFullText";
             this.btnReindexCatalogSearchFullText.Size = new System.Drawing.Size(129, 23);
             this.btnReindexCatalogSearchFullText.TabIndex = 24;
             this.btnReindexCatalogSearchFullText.TabStop = false;
             this.btnReindexCatalogSearchFullText.Text = "fulltext";
             this.btnReindexCatalogSearchFullText.UseVisualStyleBackColor = false;
+            this.btnReindexCatalogSearchFullText.Click += new System.EventHandler(this.enterCommand);
             // 
             // rTxtBoxOutput
             // 
             this.rTxtBoxOutput.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.rTxtBoxOutput.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.rTxtBoxOutput.Location = new System.Drawing.Point(153, 42);
+            this.rTxtBoxOutput.Location = new System.Drawing.Point(153, 71);
             this.rTxtBoxOutput.Name = "rTxtBoxOutput";
             this.rTxtBoxOutput.ReadOnly = true;
             this.rTxtBoxOutput.ShortcutsEnabled = false;
-            this.rTxtBoxOutput.Size = new System.Drawing.Size(610, 284);
+            this.rTxtBoxOutput.Size = new System.Drawing.Size(610, 255);
             this.rTxtBoxOutput.TabIndex = 15;
             this.rTxtBoxOutput.TabStop = false;
             this.rTxtBoxOutput.Text = "";
@@ -333,12 +335,51 @@
             this.lblCommandText.TabIndex = 8;
             this.lblCommandText.Text = "Voer hier uw commando in";
             // 
+            // backgroundWorker
+            // 
+            this.backgroundWorker.WorkerReportsProgress = true;
+            this.backgroundWorker.WorkerSupportsCancellation = true;
+            this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
+            this.backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_ProgressChanged);
+            this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.pnlIndex);
+            this.groupBox1.Location = new System.Drawing.Point(30, 134);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(800, 372);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "groupBox1";
+            // 
+            // materialLabel1
+            // 
+            this.materialLabel1.AutoSize = true;
+            this.materialLabel1.Depth = 0;
+            this.materialLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel1.Location = new System.Drawing.Point(315, 44);
+            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel1.Name = "materialLabel1";
+            this.materialLabel1.Size = new System.Drawing.Size(220, 13);
+            this.materialLabel1.TabIndex = 28;
+            this.materialLabel1.Text = "Of selecteer een van de onderstaande opties";
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(153, 332);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(610, 23);
+            this.progressBar1.TabIndex = 27;
+            // 
             // SshForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(215)))), ((int)(((byte)(215)))));
             this.ClientSize = new System.Drawing.Size(860, 539);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pnlBackgroundImage);
             this.Controls.Add(this.pnlTopBar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -348,8 +389,10 @@
             this.pnlTopBar.PerformLayout();
             this.pnlBackgroundImage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.pnlIndex.ResumeLayout(false);
+            this.pnlIndex.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -357,11 +400,11 @@
         #endregion
         private System.Windows.Forms.Panel pnlTopBar;
         private System.Windows.Forms.Panel pnlBackgroundImage;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel pnlIndex;
         private System.Windows.Forms.TextBox txtBoxInput;
         private System.Windows.Forms.Label lblCommandText;
         private System.Windows.Forms.Button btnExecuteCommand;
-        private System.Windows.Forms.Button btnCmd1;
+        private System.Windows.Forms.Button btnReindexAll;
         private System.Windows.Forms.Button btnReindexCatalogUrl;
         private System.Windows.Forms.Button btnReindexProduct_Attribute;
         private System.Windows.Forms.Button btnReindexStock;
@@ -369,12 +412,15 @@
         private System.Windows.Forms.Button btnReindexCategory_product;
         private System.Windows.Forms.Button btnReindexProduct_Flat;
         private System.Windows.Forms.Button btnReindexCategory_Flat;
-        private System.Windows.Forms.Button btnReindexProduct_url;
         private System.Windows.Forms.Button btnReindexCatalogSearchFullText;
         private System.Windows.Forms.RichTextBox rTxtBoxOutput;
         private System.Windows.Forms.Label lblMin;
         private System.Windows.Forms.Label lblClose;
+        private System.ComponentModel.BackgroundWorker backgroundWorker;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }
 
