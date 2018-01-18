@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.dGridSavedUsers = new System.Windows.Forms.DataGridView();
             this.btnSaveUserConfig = new System.Windows.Forms.Button();
@@ -39,8 +38,8 @@
             this.lblLoginText = new System.Windows.Forms.Label();
             this.lblLoginPassText = new System.Windows.Forms.Label();
             this.txtBoxPassword = new System.Windows.Forms.TextBox();
-            this.lblLoginUsernameText = new System.Windows.Forms.Label();
-            this.txtBoxUsername = new System.Windows.Forms.TextBox();
+            this.lblServerAddressText = new System.Windows.Forms.Label();
+            this.txtBoxServeraddress = new System.Windows.Forms.TextBox();
             this.txtBoxPort = new System.Windows.Forms.TextBox();
             this.txtBoxHost = new System.Windows.Forms.TextBox();
             this.lblClose = new System.Windows.Forms.Label();
@@ -50,6 +49,7 @@
             this.lblExit = new System.Windows.Forms.Label();
             this.pnlBackgroundImage = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGridSavedUsers)).BeginInit();
             this.pnlTopBar.SuspendLayout();
@@ -69,8 +69,8 @@
             this.panel1.Controls.Add(this.lblLoginText);
             this.panel1.Controls.Add(this.lblLoginPassText);
             this.panel1.Controls.Add(this.txtBoxPassword);
-            this.panel1.Controls.Add(this.lblLoginUsernameText);
-            this.panel1.Controls.Add(this.txtBoxUsername);
+            this.panel1.Controls.Add(this.lblServerAddressText);
+            this.panel1.Controls.Add(this.txtBoxServeraddress);
             this.panel1.Controls.Add(this.txtBoxPort);
             this.panel1.Controls.Add(this.txtBoxHost);
             this.panel1.Location = new System.Drawing.Point(33, 93);
@@ -99,6 +99,7 @@
             this.btnSaveUserConfig.TabIndex = 8;
             this.btnSaveUserConfig.Text = "Save";
             this.btnSaveUserConfig.UseVisualStyleBackColor = false;
+            this.btnSaveUserConfig.Click += new System.EventHandler(this.btnSaveUserConfig_Click);
             // 
             // btnSshLogin
             // 
@@ -107,7 +108,7 @@
             this.btnSshLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSshLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSshLogin.ForeColor = System.Drawing.Color.White;
-            this.btnSshLogin.Location = new System.Drawing.Point(15, 248);
+            this.btnSshLogin.Location = new System.Drawing.Point(12, 248);
             this.btnSshLogin.Name = "btnSshLogin";
             this.btnSshLogin.Size = new System.Drawing.Size(99, 33);
             this.btnSshLogin.TabIndex = 5;
@@ -128,6 +129,7 @@
             this.btnLoadUserConfig.TabIndex = 7;
             this.btnLoadUserConfig.Text = "Load";
             this.btnLoadUserConfig.UseVisualStyleBackColor = false;
+            this.btnLoadUserConfig.Click += new System.EventHandler(this.btnLoadUserConfig_Click);
             // 
             // lblLoginPortText
             // 
@@ -153,7 +155,7 @@
             // 
             this.lblLoginText.AutoSize = true;
             this.lblLoginText.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLoginText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(51)))));
+            this.lblLoginText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.lblLoginText.Location = new System.Drawing.Point(5, 10);
             this.lblLoginText.Name = "lblLoginText";
             this.lblLoginText.Size = new System.Drawing.Size(101, 37);
@@ -163,7 +165,7 @@
             // lblLoginPassText
             // 
             this.lblLoginPassText.AutoSize = true;
-            this.lblLoginPassText.Location = new System.Drawing.Point(12, 177);
+            this.lblLoginPassText.Location = new System.Drawing.Point(9, 177);
             this.lblLoginPassText.Name = "lblLoginPassText";
             this.lblLoginPassText.Size = new System.Drawing.Size(68, 13);
             this.lblLoginPassText.TabIndex = 11;
@@ -172,28 +174,28 @@
             // txtBoxPassword
             // 
             this.txtBoxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxPassword.Location = new System.Drawing.Point(15, 193);
+            this.txtBoxPassword.Location = new System.Drawing.Point(12, 193);
             this.txtBoxPassword.Name = "txtBoxPassword";
             this.txtBoxPassword.PasswordChar = '*';
             this.txtBoxPassword.Size = new System.Drawing.Size(266, 29);
             this.txtBoxPassword.TabIndex = 4;
             // 
-            // lblLoginUsernameText
+            // lblServerAddressText
             // 
-            this.lblLoginUsernameText.AutoSize = true;
-            this.lblLoginUsernameText.Location = new System.Drawing.Point(12, 117);
-            this.lblLoginUsernameText.Name = "lblLoginUsernameText";
-            this.lblLoginUsernameText.Size = new System.Drawing.Size(84, 13);
-            this.lblLoginUsernameText.TabIndex = 12;
-            this.lblLoginUsernameText.Text = "Gebruikersnaam";
+            this.lblServerAddressText.AutoSize = true;
+            this.lblServerAddressText.Location = new System.Drawing.Point(9, 117);
+            this.lblServerAddressText.Name = "lblServerAddressText";
+            this.lblServerAddressText.Size = new System.Drawing.Size(77, 13);
+            this.lblServerAddressText.TabIndex = 12;
+            this.lblServerAddressText.Text = "Address server";
             // 
-            // txtBoxUsername
+            // txtBoxServeraddress
             // 
-            this.txtBoxUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxUsername.Location = new System.Drawing.Point(15, 133);
-            this.txtBoxUsername.Name = "txtBoxUsername";
-            this.txtBoxUsername.Size = new System.Drawing.Size(266, 29);
-            this.txtBoxUsername.TabIndex = 3;
+            this.txtBoxServeraddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxServeraddress.Location = new System.Drawing.Point(12, 133);
+            this.txtBoxServeraddress.Name = "txtBoxServeraddress";
+            this.txtBoxServeraddress.Size = new System.Drawing.Size(266, 29);
+            this.txtBoxServeraddress.TabIndex = 3;
             // 
             // txtBoxPort
             // 
@@ -239,7 +241,7 @@
             // 
             // pnlTopBar
             // 
-            this.pnlTopBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(51)))));
+            this.pnlTopBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.pnlTopBar.Controls.Add(this.lblMinimize);
             this.pnlTopBar.Controls.Add(this.lblMin);
             this.pnlTopBar.Controls.Add(this.lblExit);
@@ -278,6 +280,7 @@
             // pnlBackgroundImage
             // 
             this.pnlBackgroundImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(51)))));
+            this.pnlBackgroundImage.Controls.Add(this.lblTitle);
             this.pnlBackgroundImage.Controls.Add(this.pictureBox1);
             this.pnlBackgroundImage.Location = new System.Drawing.Point(0, 25);
             this.pnlBackgroundImage.Name = "pnlBackgroundImage";
@@ -286,13 +289,25 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.pictureBox1.Location = new System.Drawing.Point(0, -97);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(577, 209);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.ForeColor = System.Drawing.Color.White;
+            this.lblTitle.Location = new System.Drawing.Point(38, 0);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(172, 37);
+            this.lblTitle.TabIndex = 27;
+            this.lblTitle.Text = "EasyIndex";
             // 
             // LoginForm
             // 
@@ -312,6 +327,7 @@
             this.pnlTopBar.ResumeLayout(false);
             this.pnlTopBar.PerformLayout();
             this.pnlBackgroundImage.ResumeLayout(false);
+            this.pnlBackgroundImage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -326,8 +342,8 @@
         private System.Windows.Forms.Label lblLoginText;
         private System.Windows.Forms.Label lblLoginPassText;
         private System.Windows.Forms.TextBox txtBoxPassword;
-        private System.Windows.Forms.Label lblLoginUsernameText;
-        private System.Windows.Forms.TextBox txtBoxUsername;
+        private System.Windows.Forms.Label lblServerAddressText;
+        private System.Windows.Forms.TextBox txtBoxServeraddress;
         private System.Windows.Forms.TextBox txtBoxPort;
         private System.Windows.Forms.TextBox txtBoxHost;
         private System.Windows.Forms.DataGridView dGridSavedUsers;
@@ -340,5 +356,6 @@
         private System.Windows.Forms.Label lblExit;
         private System.Windows.Forms.Panel pnlBackgroundImage;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lblTitle;
     }
 }

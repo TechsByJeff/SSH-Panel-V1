@@ -29,7 +29,7 @@ namespace SSH_Panel_V1
             SshForm SshForm = new SshForm();
 
             host = txtBoxHost.Text;
-            username = txtBoxUsername.Text;
+            username = txtBoxServeraddress.Text;
             password = txtBoxPassword.Text;
 
             try
@@ -109,16 +109,20 @@ namespace SSH_Panel_V1
 
         #region Config
 
-
-
-
         private void btnSaveUserConfig_Click(object sender, EventArgs e)
         {
-
+            Properties.Settings.Default.Hostnaam = txtBoxHost.Text;
+            Properties.Settings.Default.Poort = txtBoxPort.Text;
+            Properties.Settings.Default.ServerAddress = txtBoxServeraddress.Text;
+            Properties.Settings.Default.Wachtwoord = txtBoxPassword.Text;
+            Properties.Settings.Default.Save();
         }
         private void btnLoadUserConfig_Click(object sender, EventArgs e)
         {
-
+            txtBoxHost.Text = Properties.Settings.Default.Hostnaam;
+            txtBoxPort.Text = Properties.Settings.Default.Poort;
+            txtBoxServeraddress.Text = Properties.Settings.Default.ServerAddress;
+            txtBoxPassword.Text = Properties.Settings.Default.Wachtwoord;
         }
 
         #endregion Config

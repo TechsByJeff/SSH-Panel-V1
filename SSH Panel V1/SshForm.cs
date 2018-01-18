@@ -88,43 +88,56 @@ namespace SSH_Panel_V1
             if (btnName == "btnReindexAll")
             {
                 txtBoxInput.Text = "php -f questcontrol.net/shell/indexer.php reindexall";
+                pnlSelectedButton.Location = new Point(0, 94);
             }
             else if (btnName == "btnReindexCatalogSearchFullText")
             {
                 txtBoxInput.Text = "php questcontrol.net/shell/indexer.php -- -reindex catalogsearch_fulltext";
+                pnlSelectedButton.Location = new Point(0, 274);
             }
             else if (btnName == "btnReindexCatalogUrl")
             {
                 txtBoxInput.Text = "php questcontrol.net/shell/indexer.php -- -reindex catalog_url";
+                pnlSelectedButton.Location = new Point(0, 454);
             }
             else if (btnName == "btnReindexCategory_Flat")
             {
                 txtBoxInput.Text = "php questcontrol.net/shell/indexer.php -- -reindex catalog_category_flat";
+                pnlSelectedButton.Location = new Point(0, 229);
             }
             else if (btnName == "btnReindexCategory_product")
             {
                 txtBoxInput.Text = "php questcontrol.net/shell/indexer.php -- -reindex catalog_category_product";
+                pnlSelectedButton.Location = new Point(0, 409);
             }
             else if (btnName == "btnReindexProduct_Attribute")
             {
                 txtBoxInput.Text = "php questcontrol.net/shell/indexer.php -- -reindex cataloginventory_stock";
+                pnlSelectedButton.Location = new Point(0, 184);
             }
             else if (btnName == "btnReindexProduct_Flat")
             {
                 txtBoxInput.Text = "php questcontrol.net/shell/indexer.php -- -reindex catalog_product_flat";
+                pnlSelectedButton.Location = new Point(0, 319);
             }
             else if (btnName == "btnReindexProduct_price")
             {
                 txtBoxInput.Text = "php questcontrol.net/shell/indexer.php -- -reindex catalog_product_price";
+                pnlSelectedButton.Location = new Point(0, 364);
             }
             else if (btnName == "btnReindexStock")
             {
                 txtBoxInput.Text = "php questcontrol.net/shell/indexer.php -- -reindex cataloginventory_stock";
+                pnlSelectedButton.Location = new Point(0, 139);
             }
         }
 
         private void btnExecuteCommand_Click(object sender, EventArgs e)
         {
+
+            lblStatus.Text = "Process wordt uitgevoerd...";
+            lblStatus.ForeColor = Color.Orange;
+
             backgroundWorker.RunWorkerAsync(txtBoxInput.Text); 
         }
 
@@ -175,6 +188,9 @@ namespace SSH_Panel_V1
         private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             string myStringResult = (string)e.Result;
+
+            lblStatus.Text = ("Het process is compleet");
+            lblStatus.ForeColor = Color.Green;
         }
 
         #endregion Backgroundworker
