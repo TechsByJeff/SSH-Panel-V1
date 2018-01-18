@@ -1,11 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 
 namespace SSH_Panel_V1
@@ -19,10 +16,10 @@ namespace SSH_Panel_V1
 
         #region loginButton
 
-        string host;
-        string password;
-        string username;
-        int port = 22;
+        private string host;
+        private string password;
+        private string username;
+        private int port;
 
         private void btnSshLogin_Click(object sender, EventArgs e)
         {
@@ -31,6 +28,7 @@ namespace SSH_Panel_V1
             host = txtBoxHost.Text;
             username = txtBoxServeraddress.Text;
             password = txtBoxPassword.Text;
+            port = 22;
 
             try
             {
@@ -106,17 +104,53 @@ namespace SSH_Panel_V1
 
         #endregion style
 
-
         #region Config
+
+        private class User
+        {
+            public string host { get; set; }
+            public string port { get; set; }
+            public string serverAddress { get; set; }
+            public string password { get; set; }
+
+            public override string ToString()
+            {
+                return string.Format("Host: {0} \nPoort: {1}\nServer Address: {2} \nWachtwoord: {3}", host, port, serverAddress, password);
+            }
+        }
+
+
 
         private void btnSaveUserConfig_Click(object sender, EventArgs e)
         {
+
             Properties.Settings.Default.Hostnaam = txtBoxHost.Text;
             Properties.Settings.Default.Poort = txtBoxPort.Text;
             Properties.Settings.Default.ServerAddress = txtBoxServeraddress.Text;
             Properties.Settings.Default.Wachtwoord = txtBoxPassword.Text;
             Properties.Settings.Default.Save();
+
+
+            List<User> logindata = new List<User>();
+            logindata.Add(new User()
+            {
+                host = Properties.Settings.Default.Hostnaam,
+                port = Properties.Settings.Default.Poort,
+                serverAddress = Properties.Settings.Default.ServerAddress,
+                password = Properties.Settings.Default.Wachtwoord
+            });
+
+         using (StreamWriter file = File.CreateText(@"C:\Users\julle\Desktop"))
+         {
+             JsonSerializer serializer = new JsonSerializer();
+        
+             serializer.Serialize(file, logindata);
+         }
+
+
+            
         }
+
         private void btnLoadUserConfig_Click(object sender, EventArgs e)
         {
             txtBoxHost.Text = Properties.Settings.Default.Hostnaam;
@@ -126,6 +160,5 @@ namespace SSH_Panel_V1
         }
 
         #endregion Config
-
     }
 }
