@@ -106,5 +106,22 @@ namespace SSH_Panel_V1
 
         #endregion style
 
+
+        #region Config
+
+
+
+
+        private void btnSaveUserConfig_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void btnLoadUserConfig_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion Config
+
     }
 }
