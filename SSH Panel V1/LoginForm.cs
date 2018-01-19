@@ -19,7 +19,7 @@ namespace SSH_Panel_V1
         private string host;
         private string password;
         private string username;
-        private int port;
+        private int port = 22 ;
 
         private void btnSshLogin_Click(object sender, EventArgs e)
         {
@@ -119,35 +119,25 @@ namespace SSH_Panel_V1
             }
         }
 
-
-
         private void btnSaveUserConfig_Click(object sender, EventArgs e)
         {
-
-            Properties.Settings.Default.Hostnaam = txtBoxHost.Text;
-            Properties.Settings.Default.Poort = txtBoxPort.Text;
-            Properties.Settings.Default.ServerAddress = txtBoxServeraddress.Text;
-            Properties.Settings.Default.Wachtwoord = txtBoxPassword.Text;
-            Properties.Settings.Default.Save();
 
 
             List<User> logindata = new List<User>();
             logindata.Add(new User()
             {
-                host = Properties.Settings.Default.Hostnaam,
-                port = Properties.Settings.Default.Poort,
-                serverAddress = Properties.Settings.Default.ServerAddress,
-                password = Properties.Settings.Default.Wachtwoord
+                host = txtBoxHost.Text,
+                port = txtBoxPort.Text,
+                serverAddress = txtBoxServeraddress.Text,
+                password = txtBoxPassword.Text
             });
 
-         using (StreamWriter file = File.CreateText(@"C:\Users\julle\Desktop"))
-         {
-             JsonSerializer serializer = new JsonSerializer();
-        
-             serializer.Serialize(file, logindata);
-         }
-
-
+           using (StreamWriter file = File.CreateText(@"C:\Users\julle\Desktop\jemoeder.txt"))
+           {
+               JsonSerializer serializer = new JsonSerializer();
+           
+               serializer.Serialize(file, logindata);
+           }
             
         }
 
