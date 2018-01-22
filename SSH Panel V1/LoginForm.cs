@@ -44,10 +44,6 @@ namespace SSH_Panel_V1
                 this.Hide();
                 SshForm.Show();
             }
-            else
-            {
-                MessageBox.Show("er is iets fout gegaan");
-            }
         }
 
         #endregion loginButton
@@ -106,47 +102,61 @@ namespace SSH_Panel_V1
 
         #region Config
 
-        private class User
+        public class User
         {
-            public string host { get; set; }
-            public string port { get; set; }
-            public string serverAddress { get; set; }
-            public string password { get; set; }
 
-            public override string ToString()
-            {
-                return string.Format("Host: {0} \nPoort: {1}\nServer Address: {2} \nWachtwoord: {3}", host, port, serverAddress, password);
-            }
+            [JsonProperty("Host")]
+            public string Host { get; set; }
+
+            [JsonProperty("Port")]
+            public string Port { get; set; }
+
+            [JsonProperty("ServerAddress")]
+            public string ServerAddress { get; set; }
+
+            [JsonProperty("Password")]
+            public string Password { get; set; }
+
+            public static List<User> logindata = new List<User>();
         }
 
-        private void btnSaveUserConfig_Click(object sender, EventArgs e)
+        void GetData()
         {
 
+            using (StreamReader r = new StreamReader("data.json")) // variabel voor locatie bestand nog maken
+            {
+                dGridSavedUsers.DataSource = User.logindata;
+            }
+            
+        }
+
+        public void btnSaveUserConfig_Click(object sender, EventArgs e)
+        {
 
             List<User> logindata = new List<User>();
             logindata.Add(new User()
             {
-                host = txtBoxHost.Text,
-                port = txtBoxPort.Text,
-                serverAddress = txtBoxServeraddress.Text,
-                password = txtBoxPassword.Text
+                Host = txtBoxHost.Text,
+                Port = txtBoxPort.Text,
+                ServerAddress = txtBoxServeraddress.Text,
+                Password = txtBoxPassword.Text
             });
 
-           using (StreamWriter file = File.CreateText(@"C:\Users\julle\Desktop\jemoeder.txt"))
-           {
-               JsonSerializer serializer = new JsonSerializer();
-           
-               serializer.Serialize(file, logindata);
-           }
-            
+            //Serialize JSON naar een string en schrijf dan de string naar een bestand
+            //     File.WriteAllText(@"C:\Users\julle\Source\Repos\SSH-Panel-V1\SSH Panel V1\bin\Debug\data.txt", JsonConvert.SerializeObject(logindata));
+
+            // Serialize JSON direct naar een bestand
+            using (StreamWriter file = File.AppendText(@"C:\Users\julle\Source\Repos\SSH-Panel-V1\SSH Panel V1\bin\Debug\data.json"))
+            {
+                JsonSerializer serializer = new JsonSerializer();
+                serializer.Serialize(file, logindata);
+            }
         }
 
         private void btnLoadUserConfig_Click(object sender, EventArgs e)
         {
-            txtBoxHost.Text = Properties.Settings.Default.Hostnaam;
-            txtBoxPort.Text = Properties.Settings.Default.Poort;
-            txtBoxServeraddress.Text = Properties.Settings.Default.ServerAddress;
-            txtBoxPassword.Text = Properties.Settings.Default.Wachtwoord;
+            GetData();
+           
         }
 
         #endregion Config
