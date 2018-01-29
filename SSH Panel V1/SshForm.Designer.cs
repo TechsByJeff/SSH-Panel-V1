@@ -31,6 +31,8 @@
             this.lblMin = new System.Windows.Forms.Label();
             this.lblClose = new System.Windows.Forms.Label();
             this.pnlIndex = new System.Windows.Forms.Panel();
+            this.lblStatus = new System.Windows.Forms.Label();
+            this.progressBar2 = new System.Windows.Forms.ProgressBar();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.btnExecuteCommand = new System.Windows.Forms.Button();
             this.rTxtBoxOutput = new System.Windows.Forms.RichTextBox();
@@ -48,10 +50,8 @@
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.pnlTopBar = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.progressBar2 = new System.Windows.Forms.ProgressBar();
             this.pnlSelectedButton = new System.Windows.Forms.Panel();
-            this.lblStatus = new System.Windows.Forms.Label();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.pnlIndex.SuspendLayout();
             this.pnlTopBar.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -100,6 +100,21 @@
             this.pnlIndex.Name = "pnlIndex";
             this.pnlIndex.Size = new System.Drawing.Size(590, 506);
             this.pnlIndex.TabIndex = 3;
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Location = new System.Drawing.Point(22, 413);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(0, 13);
+            this.lblStatus.TabIndex = 28;
+            // 
+            // progressBar2
+            // 
+            this.progressBar2.Location = new System.Drawing.Point(25, 468);
+            this.progressBar2.Name = "progressBar2";
+            this.progressBar2.Size = new System.Drawing.Size(530, 23);
+            this.progressBar2.TabIndex = 27;
             // 
             // progressBar1
             // 
@@ -315,7 +330,6 @@
             this.backgroundWorker.WorkerReportsProgress = true;
             this.backgroundWorker.WorkerSupportsCancellation = true;
             this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
-            this.backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_ProgressChanged);
             this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
             // 
             // pnlTopBar
@@ -351,6 +365,14 @@
             this.panel1.Size = new System.Drawing.Size(271, 539);
             this.panel1.TabIndex = 4;
             // 
+            // pnlSelectedButton
+            // 
+            this.pnlSelectedButton.BackColor = System.Drawing.Color.White;
+            this.pnlSelectedButton.Location = new System.Drawing.Point(0, 94);
+            this.pnlSelectedButton.Name = "pnlSelectedButton";
+            this.pnlSelectedButton.Size = new System.Drawing.Size(10, 43);
+            this.pnlSelectedButton.TabIndex = 27;
+            // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
@@ -361,29 +383,6 @@
             this.lblTitle.Size = new System.Drawing.Size(172, 37);
             this.lblTitle.TabIndex = 26;
             this.lblTitle.Text = "EasyIndex";
-            // 
-            // progressBar2
-            // 
-            this.progressBar2.Location = new System.Drawing.Point(25, 468);
-            this.progressBar2.Name = "progressBar2";
-            this.progressBar2.Size = new System.Drawing.Size(530, 23);
-            this.progressBar2.TabIndex = 27;
-            // 
-            // pnlSelectedButton
-            // 
-            this.pnlSelectedButton.BackColor = System.Drawing.Color.White;
-            this.pnlSelectedButton.Location = new System.Drawing.Point(0, 94);
-            this.pnlSelectedButton.Name = "pnlSelectedButton";
-            this.pnlSelectedButton.Size = new System.Drawing.Size(10, 43);
-            this.pnlSelectedButton.TabIndex = 27;
-            // 
-            // lblStatus
-            // 
-            this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(22, 413);
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(0, 13);
-            this.lblStatus.TabIndex = 28;
             // 
             // SshForm
             // 

@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Renci.SshNet;
 using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SSH_Panel_V1
@@ -71,15 +67,23 @@ namespace SSH_Panel_V1
                 SSH.disconnect();
             }
             catch { }
-            //      opgeslagen_data();
-            this.Close();
-
-            
+            Application.Exit();
         }
 
         #endregion Style
 
         #region buttons
+
+        private string[] command = new string[] { "php -f questcontrol.net/shell/indexer.php reindexall",
+        "php questcontrol.net/shell/indexer.php -- -reindex cataloginventory_stock",
+        "php questcontrol.net/shell/indexer.php -- -reindex catalog_product_attribute",
+        "php questcontrol.net/shell/indexer.php -- -reindex catalog_category_flat",
+        "php questcontrol.net/shell/indexer.php -- -reindex catalogsearch_fulltext",
+        "php questcontrol.net/shell/indexer.php -- -reindex catalog_product_flat",
+        "php questcontrol.net/shell/indexer.php -- -reindex catalog_product_price",
+        "php questcontrol.net/shell/indexer.php -- -reindex catalog_category_product",
+        "php questcontrol.net/shell/indexer.php -- -reindex catalog_url"
+        };
 
         private void enterCommand(object sender, EventArgs e)
         {
@@ -87,58 +91,203 @@ namespace SSH_Panel_V1
 
             if (btnName == "btnReindexAll")
             {
-                txtBoxInput.Text = "php -f questcontrol.net/shell/indexer.php reindexall";
+                txtBoxInput.Text = command[0];
                 pnlSelectedButton.Location = new Point(0, 94);
             }
-            else if (btnName == "btnReindexCatalogSearchFullText")
+            else if (btnName == "btnReindexStock")
             {
-                txtBoxInput.Text = "php questcontrol.net/shell/indexer.php -- -reindex catalogsearch_fulltext";
-                pnlSelectedButton.Location = new Point(0, 274);
-            }
-            else if (btnName == "btnReindexCatalogUrl")
-            {
-                txtBoxInput.Text = "php questcontrol.net/shell/indexer.php -- -reindex catalog_url";
-                pnlSelectedButton.Location = new Point(0, 454);
-            }
-            else if (btnName == "btnReindexCategory_Flat")
-            {
-                txtBoxInput.Text = "php questcontrol.net/shell/indexer.php -- -reindex catalog_category_flat";
-                pnlSelectedButton.Location = new Point(0, 229);
-            }
-            else if (btnName == "btnReindexCategory_product")
-            {
-                txtBoxInput.Text = "php questcontrol.net/shell/indexer.php -- -reindex catalog_category_product";
-                pnlSelectedButton.Location = new Point(0, 409);
+                txtBoxInput.Text = command[1];
+                pnlSelectedButton.Location = new Point(0, 139);
             }
             else if (btnName == "btnReindexProduct_Attribute")
             {
-                txtBoxInput.Text = "php questcontrol.net/shell/indexer.php -- -reindex cataloginventory_stock";
+                txtBoxInput.Text = command[2];
                 pnlSelectedButton.Location = new Point(0, 184);
+            }
+            else if (btnName == "btnReindexCategory_Flat")
+            {
+                txtBoxInput.Text = command[3];
+                pnlSelectedButton.Location = new Point(0, 229);
+            }
+            else if (btnName == "btnReindexCatalogSearchFullText")
+            {
+                txtBoxInput.Text = command[4];
+                pnlSelectedButton.Location = new Point(0, 274);
             }
             else if (btnName == "btnReindexProduct_Flat")
             {
-                txtBoxInput.Text = "php questcontrol.net/shell/indexer.php -- -reindex catalog_product_flat";
+                txtBoxInput.Text = command[5];
                 pnlSelectedButton.Location = new Point(0, 319);
             }
             else if (btnName == "btnReindexProduct_price")
             {
-                txtBoxInput.Text = "php questcontrol.net/shell/indexer.php -- -reindex catalog_product_price";
+                txtBoxInput.Text = command[6];
                 pnlSelectedButton.Location = new Point(0, 364);
             }
-            else if (btnName == "btnReindexStock")
+            else if (btnName == "btnReindexCategory_product")
             {
-                txtBoxInput.Text = "php questcontrol.net/shell/indexer.php -- -reindex cataloginventory_stock";
-                pnlSelectedButton.Location = new Point(0, 139);
+                txtBoxInput.Text = command[7];
+                pnlSelectedButton.Location = new Point(0, 409);
+            }
+            else if (btnName == "btnReindexCatalogUrl")
+            {
+                txtBoxInput.Text = command[8];
+                pnlSelectedButton.Location = new Point(0, 454);
             }
         }
 
         private void btnExecuteCommand_Click(object sender, EventArgs e)
         {
-
             lblStatus.Text = "Process wordt uitgevoerd...";
             lblStatus.ForeColor = Color.Orange;
 
-            backgroundWorker.RunWorkerAsync(txtBoxInput.Text); 
+            backgroundWorker.RunWorkerAsync(txtBoxInput.Text);
+            InitializeBackgroundWorker();
+        }
+
+        private void ReindexAll()
+        {
+            #region Task
+
+            Task ReindexStock = new Task(delegate
+            {
+                this.Invoke(new Action(() =>
+                {
+                    btnReindexStock.PerformClick();
+                    txtBoxInput.Text = command[1];
+                    ExecuteCommand();
+                }
+                ));
+            });
+            ReindexStock.Start();
+            ReindexStock.Wait();
+
+            Task Product_attribute = new Task(delegate
+            {
+                this.Invoke(new Action(() =>
+                {
+                    btnReindexProduct_Attribute.PerformClick();
+                    txtBoxInput.Text = command[2];
+                    ExecuteCommand();
+                }
+              ));
+            });
+            Product_attribute.Start();
+            Product_attribute.Wait();
+            Task Category_Flat = new Task(() =>
+            {
+                this.Invoke(new Action(() =>
+                {
+                    btnReindexCategory_Flat.PerformClick();
+                    txtBoxInput.Text = command[3];
+                    ExecuteCommand();
+                }
+                ));
+            });
+            Category_Flat.Start();
+            Category_Flat.Wait();
+
+            Task FullText = new Task(() =>
+            {
+                this.Invoke(new Action(() =>
+                {
+                    btnReindexCatalogSearchFullText.PerformClick();
+                    txtBoxInput.Text = command[5];
+                    ExecuteCommand();
+                }
+                ));
+            });
+            FullText.Start();
+            FullText.Wait();
+            Task Product_Flat = new Task(() =>
+            {
+                this.Invoke(new Action(() =>
+                {
+                    btnReindexProduct_Flat.PerformClick();
+                    txtBoxInput.Text = command[5];
+                    ExecuteCommand();
+                }
+                ));
+            });
+            Product_Flat.Start();
+            Product_Flat.Wait();
+            Task Product_Price = new Task(() =>
+            {
+                this.Invoke(new Action(() =>
+                {
+                    btnReindexProduct_Flat.PerformClick();
+                    txtBoxInput.Text = command[6];
+                    ExecuteCommand();
+                }
+                ));
+            });
+            Product_Price.Start();
+            Product_Price.Wait();
+            Task Category_Product = new Task(() =>
+            {
+                this.Invoke(new Action(() =>
+                {
+                    btnReindexCategory_product.PerformClick();
+                    txtBoxInput.Text = command[7];
+                    ExecuteCommand();
+                }
+               ));
+            });
+            Category_Product.Start();
+            Category_Product.Wait();
+            Task Catalog_Url = new Task(() =>
+            {
+                this.Invoke(new Action(() =>
+                {
+                    btnReindexCatalogUrl.PerformClick();
+                    txtBoxInput.Text = command[8];
+                    ExecuteCommand();
+                }
+                ));
+            });
+            Catalog_Url.Start();
+            Catalog_Url.Wait();
+
+            #endregion Task
+
+            #region thread
+
+     //   new Thread(() =>
+     //           {
+     //               MessageBox.Show("yolo1");
+     //               btnReindexStock.PerformClick();
+     //               txtBoxInput.Text = command[1];
+     //               ExecuteCommand();
+     //           }).Start();
+     //
+     //   new Thread(() =>
+     //   {
+     //       MessageBox.Show("yolo1");
+     //       btnReindexProduct_Attribute.PerformClick();
+     //       txtBoxInput.Text = command[2];
+     //       ExecuteCommand();
+     //   }).Start();
+
+            #endregion thread
+
+            #region Threadpool.QeueUserWorkItem
+
+     //   ThreadPool.QueueUserWorkItem(delegate
+     //   {
+     //       MessageBox.Show("yolo");
+     //       btnReindexStock.PerformClick();
+     //       txtBoxInput.Text = command[1];
+     //       ExecuteCommand();
+     //   });
+     //   ThreadPool.QueueUserWorkItem(delegate
+     //   {
+     //       MessageBox.Show("yolo1");
+     //       btnReindexProduct_Attribute.PerformClick();
+     //       txtBoxInput.Text = command[2];
+     //       ExecuteCommand();
+     //   });
+
+            #endregion Threadpool.QeueUserWorkItem
         }
 
         public void ExecuteCommand()
@@ -172,23 +321,30 @@ namespace SSH_Panel_V1
 
         private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            string input = (string)e.Argument;
-            ExecuteCommand();
+            if (txtBoxInput.Text == command[0])
+            {
+                // new Thread(new ThreadStart(ReindexAll)).Start();
 
-            ((BackgroundWorker)sender).ReportProgress(0, null);
+                Thread t = new Thread(new ThreadStart(ReindexAll));
+                t.Start();
+                t.IsBackground = true;
 
-            e.Result = null;
+                //  Task.Factory.StartNew(() => ReindexAll());
+
+                // ReindexAll();
+            }
+            else
+            {
+                ExecuteCommand();
+            }
         }
 
         private void backgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            string myStringObject = (string)e.UserState;
         }
 
         private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            string myStringResult = (string)e.Result;
-
             lblStatus.Text = ("Het process is compleet");
             lblStatus.ForeColor = Color.Green;
         }

@@ -293,11 +293,11 @@
             this.lblTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.White;
-            this.lblTitle.Location = new System.Drawing.Point(38, 0);
+            this.lblTitle.Location = new System.Drawing.Point(38, 10);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(172, 37);
+            this.lblTitle.Size = new System.Drawing.Size(181, 37);
             this.lblTitle.TabIndex = 27;
-            this.lblTitle.Text = "EasyIndex";
+            this.lblTitle.Text = "Easy index";
             // 
             // pictureBox1
             // 

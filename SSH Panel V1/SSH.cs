@@ -1,32 +1,30 @@
 ﻿using Renci.SshNet;
 using System;
 using System.Windows.Forms;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SSH_Panel_V1
 {
-   public class SSH
+    public class SSH
     {
-
         #region SSH Variabels
+
         public static SshClient client;
-        #endregion;
+
+        #endregion SSH Variabels
 
         #region SSH Connection
-       
+
         // Connect naar de SSH client
         public static string connect(string hostname, string username, string password, int port = 22)
         {
             try //Error handeling voor de SSH client
-            { 
+            {
                 client = new SshClient(hostname, port, username, password); //Create the SSH object
                 client.Connect(); //Connect the SSH object
                 return null; //Return no errors
             }
-            catch(Exception ex) {
+            catch (Exception ex)
+            {
                 MessageBox.Show("Something wrent wrong while disconnecting to your SSH server:" + Environment.NewLine + ex.ToString()); //Return error);
                 return null;
             }
@@ -41,14 +39,14 @@ namespace SSH_Panel_V1
                 client.Dispose(); //Remove all settings in the client
                 return null; //Return no errors
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Something wrent wrong while disconnecting to your SSH server:" + Environment.NewLine + ex.ToString()); //Return error);
-                return null; 
+                return null;
             }
         }
 
-        #endregion;
+        #endregion SSH Connection
 
         #region SSH Commands
 
@@ -60,13 +58,12 @@ namespace SSH_Panel_V1
                 SshCommand cmd = client.CreateCommand(command); //Create command object
                 return cmd.Execute(); //Return the command result
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return "Error while executing this command: " + Environment.NewLine + ex.ToString(); // Return error
             }
         }
 
-        #endregion;
-
+        #endregion SSH Commands
     }
 }

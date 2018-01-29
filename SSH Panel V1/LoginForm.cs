@@ -19,7 +19,7 @@ namespace SSH_Panel_V1
         private string host;
         private string password;
         private string username;
-        private int port = 22 ;
+        private int port = 22;
 
         private void btnSshLogin_Click(object sender, EventArgs e)
         {
@@ -104,7 +104,6 @@ namespace SSH_Panel_V1
 
         public class User
         {
-
             [JsonProperty("Host")]
             public string Host { get; set; }
 
@@ -120,19 +119,16 @@ namespace SSH_Panel_V1
             public static List<User> logindata = new List<User>();
         }
 
-        void GetData()
+        private void GetData()
         {
-
             using (StreamReader r = new StreamReader("data.json")) // variabel voor locatie bestand nog maken
             {
                 dGridSavedUsers.DataSource = User.logindata;
             }
-            
         }
 
         public void btnSaveUserConfig_Click(object sender, EventArgs e)
         {
-
             List<User> logindata = new List<User>();
             logindata.Add(new User()
             {
@@ -156,7 +152,6 @@ namespace SSH_Panel_V1
         private void btnLoadUserConfig_Click(object sender, EventArgs e)
         {
             GetData();
-           
         }
 
         #endregion Config
