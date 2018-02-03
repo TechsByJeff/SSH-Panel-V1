@@ -82,7 +82,8 @@ namespace SSH_Panel_V1
         "php questcontrol.net/shell/indexer.php -- -reindex catalog_product_flat",
         "php questcontrol.net/shell/indexer.php -- -reindex catalog_product_price",
         "php questcontrol.net/shell/indexer.php -- -reindex catalog_category_product",
-        "php questcontrol.net/shell/indexer.php -- -reindex catalog_url"
+        "php questcontrol.net/shell/indexer.php -- -reindex catalog_url",
+        "php -f questcontrol.net/shell/log.php clean"
         };
 
         private void enterCommand(object sender, EventArgs e)
@@ -134,6 +135,11 @@ namespace SSH_Panel_V1
                 txtBoxInput.Text = command[8];
                 pnlSelectedButton.Location = new Point(0, 454);
             }
+            else if (btnName == "btnClearLog")
+            {
+                txtBoxInput.Text = command[9];
+                pnlSelectedButton.Location = new Point(0, 526);
+            }
         }
 
         private void btnExecuteCommand_Click(object sender, EventArgs e)
@@ -145,151 +151,230 @@ namespace SSH_Panel_V1
             InitializeBackgroundWorker();
         }
 
-        private void ReindexAll()
-        {
-            #region Task
+        #region Reindex_Tasks
 
-            Task ReindexStock = new Task(delegate
+        public async Task ReindexStock()
+        {
+            await Task.Run(() =>
             {
                 this.Invoke(new Action(() =>
                 {
                     btnReindexStock.PerformClick();
                     txtBoxInput.Text = command[1];
                     ExecuteCommand();
-                }
-                ));
+                }));
             });
-            ReindexStock.Start();
-            ReindexStock.Wait();
+        }
 
-            Task Product_attribute = new Task(delegate
+        public async Task Product_Attribute()
+        {
+            this.Invoke(new Action(() =>
             {
-                this.Invoke(new Action(() =>
-                {
-                    btnReindexProduct_Attribute.PerformClick();
-                    txtBoxInput.Text = command[2];
-                    ExecuteCommand();
-                }
-              ));
-            });
-            Product_attribute.Start();
-            Product_attribute.Wait();
-            Task Category_Flat = new Task(() =>
-            {
-                this.Invoke(new Action(() =>
-                {
-                    btnReindexCategory_Flat.PerformClick();
-                    txtBoxInput.Text = command[3];
-                    ExecuteCommand();
-                }
-                ));
-            });
-            Category_Flat.Start();
-            Category_Flat.Wait();
+                btnReindexProduct_Attribute.PerformClick();
+                txtBoxInput.Text = command[2];
+                ExecuteCommand();
+            }
+          ));
+        }
 
-            Task FullText = new Task(() =>
-            {
-                this.Invoke(new Action(() =>
-                {
-                    btnReindexCatalogSearchFullText.PerformClick();
-                    txtBoxInput.Text = command[5];
-                    ExecuteCommand();
-                }
-                ));
-            });
-            FullText.Start();
-            FullText.Wait();
-            Task Product_Flat = new Task(() =>
-            {
-                this.Invoke(new Action(() =>
-                {
-                    btnReindexProduct_Flat.PerformClick();
-                    txtBoxInput.Text = command[5];
-                    ExecuteCommand();
-                }
-                ));
-            });
-            Product_Flat.Start();
-            Product_Flat.Wait();
-            Task Product_Price = new Task(() =>
-            {
-                this.Invoke(new Action(() =>
-                {
-                    btnReindexProduct_Flat.PerformClick();
-                    txtBoxInput.Text = command[6];
-                    ExecuteCommand();
-                }
-                ));
-            });
-            Product_Price.Start();
-            Product_Price.Wait();
-            Task Category_Product = new Task(() =>
-            {
-                this.Invoke(new Action(() =>
-                {
-                    btnReindexCategory_product.PerformClick();
-                    txtBoxInput.Text = command[7];
-                    ExecuteCommand();
-                }
-               ));
-            });
-            Category_Product.Start();
-            Category_Product.Wait();
-            Task Catalog_Url = new Task(() =>
-            {
-                this.Invoke(new Action(() =>
-                {
-                    btnReindexCatalogUrl.PerformClick();
-                    txtBoxInput.Text = command[8];
-                    ExecuteCommand();
-                }
-                ));
-            });
-            Catalog_Url.Start();
-            Catalog_Url.Wait();
+        public async Task Category_Flat()
+        {
+
+        }
+
+        public async Task FullText()
+        {
+
+        }
+
+        public async Task Product_Flat()
+        {
+
+        }
+
+        public async Task Product_Price()
+        {
+
+        }
+
+        public async Task Category_Product()
+        {
+
+        }
+        public async Task Catalog_Url()
+        {
+            
+        }
+        #endregion tasks
+        private void ReindexAll()
+        {
+            #region Reindex_Task
+
+            //    Task ReindexStock = new Task(delegate
+            //    {
+            //        this.Invoke(new Action(() =>
+            //        {
+            //            btnReindexStock.PerformClick();
+            //            txtBoxInput.Text = command[1];
+            //            ExecuteCommand();
+            //        }
+            //        ));
+            //    });
+            //    ReindexStock.Start();
+            //    ReindexStock.Wait();
+
+            //       Task Product_attribute = new Task(delegate
+            //       {
+            //         this.Invoke(new Action(() =>
+            //         {
+            //             btnReindexProduct_Attribute.PerformClick();
+            //    txtBoxInput.Text = command[2];
+            //    ExecuteCommand();
+            //      }
+            //      ));
+            //         
+
+            //       });
+            //       Product_attribute.Start();
+            //       Product_attribute.Wait();
+            //       Task Category_Flat = new Task(() =>
+            //       {
+            //           this.Invoke(new Action(() =>
+            //           {
+            //               btnReindexCategory_Flat.PerformClick();
+            //               txtBoxInput.Text = command[3];
+            //               ExecuteCommand();
+            //           }
+            //           ));
+            //       });
+            //       Category_Flat.Start();
+            //       Category_Flat.Wait();
+            //    
+            //       Task FullText = new Task(() =>
+            //       {
+            //           this.Invoke(new Action(() =>
+            //           {
+            //               btnReindexCatalogSearchFullText.PerformClick();
+            //               txtBoxInput.Text = command[5];
+            //               ExecuteCommand();
+            //           }
+            //           ));
+            //       });
+            //       FullText.Start();
+            //       FullText.Wait();
+            //       Task Product_Flat = new Task(() =>
+            //       {
+            //           this.Invoke(new Action(() =>
+            //           {
+            //               btnReindexProduct_Flat.PerformClick();
+            //               txtBoxInput.Text = command[5];
+            //               ExecuteCommand();
+            //           }
+            //           ));
+            //       });
+            //       Product_Flat.Start();
+            //       Product_Flat.Wait();
+            //       Task Product_Price = new Task(() =>
+            //       {
+            //           this.Invoke(new Action(() =>
+            //           {
+            //               btnReindexProduct_Flat.PerformClick();
+            //               txtBoxInput.Text = command[6];
+            //               ExecuteCommand();
+            //           }
+            //           ));
+            //       });
+            //       Product_Price.Start();
+            //       Product_Price.Wait();
+            //       Task Category_Product = new Task(() =>
+            //       {
+            //           this.Invoke(new Action(() =>
+            //           {
+            //               btnReindexCategory_product.PerformClick();
+            //               txtBoxInput.Text = command[7];
+            //               ExecuteCommand();
+            //           }
+            //          ));
+            //       });
+            //       Category_Product.Start();
+            //       Category_Product.Wait();
+            //       Task Catalog_Url = new Task(() =>
+            //       {
+            //           this.Invoke(new Action(() =>
+            //           {
+            //               btnReindexCatalogUrl.PerformClick();
+            //               txtBoxInput.Text = command[8];
+            //               ExecuteCommand();
+            //           }
+            //           ));
+            //       });
+            //       Catalog_Url.Start();
+            //       Catalog_Url.Wait();
 
             #endregion Task
 
             #region thread
 
-     //   new Thread(() =>
-     //           {
-     //               MessageBox.Show("yolo1");
-     //               btnReindexStock.PerformClick();
-     //               txtBoxInput.Text = command[1];
-     //               ExecuteCommand();
-     //           }).Start();
-     //
-     //   new Thread(() =>
-     //   {
-     //       MessageBox.Show("yolo1");
-     //       btnReindexProduct_Attribute.PerformClick();
-     //       txtBoxInput.Text = command[2];
-     //       ExecuteCommand();
-     //   }).Start();
+            //   new Thread(() =>
+            //           {
+            //               MessageBox.Show("yolo1");
+            //               btnReindexStock.PerformClick();
+            //               txtBoxInput.Text = command[1];
+            //               ExecuteCommand();
+            //           }).Start();
+            //
+            //   new Thread(() =>
+            //   {
+            //       MessageBox.Show("yolo1");
+            //       btnReindexProduct_Attribute.PerformClick();
+            //       txtBoxInput.Text = command[2];
+            //       ExecuteCommand();
+            //   }).Start();
 
+
+            //   new Thread(() => {
+            //
+            //       this.Invoke(new Action(() =>
+            //       {
+            //           btnReindexStock.PerformClick();
+            //           txtBoxInput.Text = command[1];
+            //           ExecuteCommand();
+            //       }));
+            //   })
+            //   { IsBackground = true }.Start();
+            //
+            //   new Thread(() => {
+            //
+            //       this.Invoke(new Action(() =>
+            //       {
+            //           btnReindexProduct_Attribute.PerformClick();
+            //           txtBoxInput.Text = command[2];
+            //           ExecuteCommand();
+            //       }));
+            //       
+            //   })
+            //   { IsBackground = true }.Start();
             #endregion thread
 
             #region Threadpool.QeueUserWorkItem
 
-     //   ThreadPool.QueueUserWorkItem(delegate
-     //   {
-     //       MessageBox.Show("yolo");
-     //       btnReindexStock.PerformClick();
-     //       txtBoxInput.Text = command[1];
-     //       ExecuteCommand();
-     //   });
-     //   ThreadPool.QueueUserWorkItem(delegate
-     //   {
-     //       MessageBox.Show("yolo1");
-     //       btnReindexProduct_Attribute.PerformClick();
-     //       txtBoxInput.Text = command[2];
-     //       ExecuteCommand();
-     //   });
+            //   ThreadPool.QueueUserWorkItem(delegate
+            //   {
+            //       MessageBox.Show("yolo");
+            //       btnReindexStock.PerformClick();
+            //       txtBoxInput.Text = command[1];
+            //       ExecuteCommand();
+            //   });
+            //   ThreadPool.QueueUserWorkItem(delegate
+            //   {
+            //       MessageBox.Show("yolo1");
+            //       btnReindexProduct_Attribute.PerformClick();
+            //       txtBoxInput.Text = command[2];
+            //       ExecuteCommand();
+            //   });
 
             #endregion Threadpool.QeueUserWorkItem
         }
-
         public void ExecuteCommand()
         {
             var cmd = SSH.client.CreateCommand(txtBoxInput.Text);
@@ -315,7 +400,7 @@ namespace SSH_Panel_V1
                 WorkerReportsProgress = true
             };
             backgroundWorker.DoWork += backgroundWorker_DoWork;
-            backgroundWorker.ProgressChanged += backgroundWorker_ProgressChanged;
+        //    backgroundWorker.ProgressChanged += backgroundWorker_ProgressChanged;
             backgroundWorker.RunWorkerCompleted += backgroundWorker_RunWorkerCompleted;
         }
 
@@ -325,13 +410,14 @@ namespace SSH_Panel_V1
             {
                 // new Thread(new ThreadStart(ReindexAll)).Start();
 
-                Thread t = new Thread(new ThreadStart(ReindexAll));
-                t.Start();
-                t.IsBackground = true;
+                //Thread t = new Thread(new ThreadStart(ReindexAll));
+                //t.Start();
+                //t.IsBackground = true;
 
                 //  Task.Factory.StartNew(() => ReindexAll());
 
-                // ReindexAll();
+                ReindexStock();
+                Product_Attribute();
             }
             else
             {
@@ -339,9 +425,9 @@ namespace SSH_Panel_V1
             }
         }
 
-        private void backgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-        }
+    //   private void backgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+    //   {
+    //   }
 
         private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
