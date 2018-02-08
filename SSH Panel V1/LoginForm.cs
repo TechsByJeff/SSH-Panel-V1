@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace SSH_Panel_V1
 {
@@ -13,7 +14,7 @@ namespace SSH_Panel_V1
         {
             InitializeComponent();
         }
-
+        
         #region loginButton
 
         private string host;
@@ -104,54 +105,72 @@ namespace SSH_Panel_V1
 
         public class User
         {
-            [JsonProperty("Host")]
-            public string Host { get; set; }
+            private string host;
+            private string port;
+            private string serveraddress;
+            private string password;
 
-            [JsonProperty("Port")]
-            public string Port { get; set; }
-
-            [JsonProperty("ServerAddress")]
-            public string ServerAddress { get; set; }
-
-            [JsonProperty("Password")]
-            public string Password { get; set; }
-
-            public static List<User> logindata = new List<User>();
-        }
-
-        private void GetData()
-        {
-            using (StreamReader r = new StreamReader("data.json")) // variabel voor locatie bestand nog maken
+            public string Host
             {
-                dGridSavedUsers.DataSource = User.logindata;
+                get { return host; }
+                set { host = value; }
+            }
+            public string Port
+            {
+                get { return port; }
+                set { port = value; }
+            }
+            public string ServerAddress
+            {
+                get { return serveraddress; }
+                set { serveraddress = value; }
+            }
+            public string Password
+            {
+                get { return password; }
+                set { password = value; }
             }
         }
 
         public void btnSaveUserConfig_Click(object sender, EventArgs e)
         {
-            List<User> logindata = new List<User>();
-            logindata.Add(new User()
+            saveFileDialog.InitialDirectory = Directory.GetCurrentDirectory();
+            saveFileDialog.Filter = "Xml Files (*.xml)|*.xml";
+            saveFileDialog.FilterIndex = 2;
+            saveFileDialog.RestoreDirectory = true;
+            if(saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                Host = txtBoxHost.Text,
-                Port = txtBoxPort.Text,
-                ServerAddress = txtBoxServeraddress.Text,
-                Password = txtBoxPassword.Text
-            });
-
-            //Serialize JSON naar een string en schrijf dan de string naar een bestand
-            //     File.WriteAllText(@"C:\Users\julle\Source\Repos\SSH-Panel-V1\SSH Panel V1\bin\Debug\data.txt", JsonConvert.SerializeObject(logindata));
-
-            // Serialize JSON direct naar een bestand
-            using (StreamWriter file = File.AppendText(@"C:\Users\julle\Source\Repos\SSH-Panel-V1\SSH Panel V1\bin\Debug\data.json"))
-            {
-                JsonSerializer serializer = new JsonSerializer();
-                serializer.Serialize(file, logindata);
+                User user = new User
+                {
+                    Host = txtBoxHost.Text,
+                    Port = txtBoxPort.Text,
+                    ServerAddress = txtBoxServeraddress.Text,
+                    Password = txtBoxPassword.Text
+                };
+                XmlSave.SaveData(user,saveFileDialog.FileName);
             }
+
+           // List<User> logindata = new List<User>();
+           // logindata.Add(new User()
+           // {
+           //     Host = txtBoxHost.Text,
+           //     Port = txtBoxPort.Text,
+           //     ServerAddress = txtBoxServeraddress.Text,
+           //     Password = txtBoxPassword.Text
+           // });
+
         }
 
         private void btnLoadUserConfig_Click(object sender, EventArgs e)
         {
-            GetData();
+            User user = new User();
+            XmlLoad<User> loadUser = new XmlLoad<User>();
+
+            user = loadUser.LoadData("test.xml");
+            txtBoxHost.Text = user.Host;
+            txtBoxPort.Text = user.Port;
+            txtBoxServeraddress.Text = user.ServerAddress;
+            txtBoxPassword.Text = user.Password;
         }
 
         #endregion Config

@@ -50,6 +50,7 @@
             this.pnlBackgroundImage = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGridSavedUsers)).BeginInit();
             this.pnlTopBar.SuspendLayout();
@@ -357,5 +358,6 @@
         private System.Windows.Forms.Panel pnlBackgroundImage;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
     }
 }

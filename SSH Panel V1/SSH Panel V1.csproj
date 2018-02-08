@@ -97,6 +97,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SSH.cs" />
+    <Compile Include="XmlSave.cs" />
     <EmbeddedResource Include="SshForm.resx">
       <DependentUpon>SshForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -113,6 +114,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
