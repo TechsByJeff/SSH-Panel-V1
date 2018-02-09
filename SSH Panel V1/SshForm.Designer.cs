@@ -32,8 +32,6 @@
             this.lblClose = new System.Windows.Forms.Label();
             this.pnlIndex = new System.Windows.Forms.Panel();
             this.lblStatus = new System.Windows.Forms.Label();
-            this.progressBar2 = new System.Windows.Forms.ProgressBar();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.btnExecuteCommand = new System.Windows.Forms.Button();
             this.rTxtBoxOutput = new System.Windows.Forms.RichTextBox();
             this.txtBoxInput = new System.Windows.Forms.TextBox();
@@ -92,8 +90,6 @@
             this.pnlIndex.AutoSize = true;
             this.pnlIndex.BackColor = System.Drawing.Color.White;
             this.pnlIndex.Controls.Add(this.lblStatus);
-            this.pnlIndex.Controls.Add(this.progressBar2);
-            this.pnlIndex.Controls.Add(this.progressBar1);
             this.pnlIndex.Controls.Add(this.btnExecuteCommand);
             this.pnlIndex.Controls.Add(this.rTxtBoxOutput);
             this.pnlIndex.Controls.Add(this.txtBoxInput);
@@ -107,24 +103,10 @@
             // lblStatus
             // 
             this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(22, 467);
+            this.lblStatus.Location = new System.Drawing.Point(22, 517);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(0, 13);
             this.lblStatus.TabIndex = 28;
-            // 
-            // progressBar2
-            // 
-            this.progressBar2.Location = new System.Drawing.Point(25, 521);
-            this.progressBar2.Name = "progressBar2";
-            this.progressBar2.Size = new System.Drawing.Size(530, 23);
-            this.progressBar2.TabIndex = 27;
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(25, 492);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(530, 23);
-            this.progressBar1.TabIndex = 27;
             // 
             // btnExecuteCommand
             // 
@@ -133,7 +115,7 @@
             this.btnExecuteCommand.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnExecuteCommand.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExecuteCommand.ForeColor = System.Drawing.Color.White;
-            this.btnExecuteCommand.Location = new System.Drawing.Point(292, 463);
+            this.btnExecuteCommand.Location = new System.Drawing.Point(292, 512);
             this.btnExecuteCommand.Name = "btnExecuteCommand";
             this.btnExecuteCommand.Size = new System.Drawing.Size(263, 23);
             this.btnExecuteCommand.TabIndex = 26;
@@ -150,7 +132,7 @@
             this.rTxtBoxOutput.Name = "rTxtBoxOutput";
             this.rTxtBoxOutput.ReadOnly = true;
             this.rTxtBoxOutput.ShortcutsEnabled = false;
-            this.rTxtBoxOutput.Size = new System.Drawing.Size(530, 397);
+            this.rTxtBoxOutput.Size = new System.Drawing.Size(530, 446);
             this.rTxtBoxOutput.TabIndex = 15;
             this.rTxtBoxOutput.TabStop = false;
             this.rTxtBoxOutput.Text = "";
@@ -457,11 +439,9 @@
         private System.Windows.Forms.Label lblMin;
         private System.Windows.Forms.Label lblClose;
         private System.ComponentModel.BackgroundWorker backgroundWorker;
-        private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Panel pnlTopBar;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.ProgressBar progressBar2;
         private System.Windows.Forms.Panel pnlSelectedButton;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.Button btnClearLog;

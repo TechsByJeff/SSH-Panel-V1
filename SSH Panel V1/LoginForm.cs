@@ -1,10 +1,6 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Drawing;
-using System.IO;
 using System.Windows.Forms;
-using System.Xml.Serialization;
 
 namespace SSH_Panel_V1
 {
@@ -20,7 +16,7 @@ namespace SSH_Panel_V1
         private string host;
         private string password;
         private string username;
-        private int port = 22;
+        private int port;
 
         private void btnSshLogin_Click(object sender, EventArgs e)
         {
@@ -29,7 +25,7 @@ namespace SSH_Panel_V1
             host = txtBoxHost.Text;
             username = txtBoxServeraddress.Text;
             password = txtBoxPassword.Text;
-            port = 22;
+            port = Convert.ToInt32(txtBoxPort.Text);
 
             try
             {
@@ -37,7 +33,7 @@ namespace SSH_Panel_V1
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Er is iets fouts gegaan: " + ex.ToString());
+                MessageBox.Show("Er is iets fouts gegaan: " + ex);
             }
 
             if (SSH.client.IsConnected)
@@ -49,12 +45,40 @@ namespace SSH_Panel_V1
 
         #endregion loginButton
 
+        #region Config
+
+        public void btnSaveUserConfig_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.ServerAddress = txtBoxServeraddress.Text;
+            Properties.Settings.Default.Hostnaam = txtBoxHost.Text;
+            Properties.Settings.Default.Poort = txtBoxPort.Text;
+            Properties.Settings.Default.Wachtwoord = txtBoxPassword.Text;
+            Properties.Settings.Default.Save();
+        }
+
+        private void btnLoadUserConfig_Click(object sender, EventArgs e)
+        {
+            txtBoxServeraddress.Text = Properties.Settings.Default.ServerAddress;
+            txtBoxHost.Text = Properties.Settings.Default.Hostnaam;
+            txtBoxPort.Text = Properties.Settings.Default.Poort;
+            txtBoxPassword.Text = Properties.Settings.Default.Wachtwoord;
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            txtBoxServeraddress.Text = Properties.Settings.Default.ServerAddress;
+            txtBoxHost.Text = Properties.Settings.Default.Hostnaam;
+            txtBoxPort.Text = Properties.Settings.Default.Poort;
+            txtBoxPassword.Text = Properties.Settings.Default.Wachtwoord;
+        }
+
+        #endregion Config
+
         #region style
 
         private Point lastLocation;
         private bool mouseDown;
 
-        //Voegd schadow toe
         private const int CS_DROPSHADOW = 0x00020000;
 
         protected override CreateParams CreateParams
@@ -101,78 +125,5 @@ namespace SSH_Panel_V1
 
         #endregion style
 
-        #region Config
-
-        public class User
-        {
-            private string host;
-            private string port;
-            private string serveraddress;
-            private string password;
-
-            public string Host
-            {
-                get { return host; }
-                set { host = value; }
-            }
-            public string Port
-            {
-                get { return port; }
-                set { port = value; }
-            }
-            public string ServerAddress
-            {
-                get { return serveraddress; }
-                set { serveraddress = value; }
-            }
-            public string Password
-            {
-                get { return password; }
-                set { password = value; }
-            }
-        }
-
-        public void btnSaveUserConfig_Click(object sender, EventArgs e)
-        {
-            saveFileDialog.InitialDirectory = Directory.GetCurrentDirectory();
-            saveFileDialog.Filter = "Xml Files (*.xml)|*.xml";
-            saveFileDialog.FilterIndex = 2;
-            saveFileDialog.RestoreDirectory = true;
-            if(saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                User user = new User
-                {
-                    Host = txtBoxHost.Text,
-                    Port = txtBoxPort.Text,
-                    ServerAddress = txtBoxServeraddress.Text,
-                    Password = txtBoxPassword.Text
-                };
-                XmlSave.SaveData(user,saveFileDialog.FileName);
-            }
-
-           // List<User> logindata = new List<User>();
-           // logindata.Add(new User()
-           // {
-           //     Host = txtBoxHost.Text,
-           //     Port = txtBoxPort.Text,
-           //     ServerAddress = txtBoxServeraddress.Text,
-           //     Password = txtBoxPassword.Text
-           // });
-
-        }
-
-        private void btnLoadUserConfig_Click(object sender, EventArgs e)
-        {
-            User user = new User();
-            XmlLoad<User> loadUser = new XmlLoad<User>();
-
-            user = loadUser.LoadData("test.xml");
-            txtBoxHost.Text = user.Host;
-            txtBoxPort.Text = user.Port;
-            txtBoxServeraddress.Text = user.ServerAddress;
-            txtBoxPassword.Text = user.Password;
-        }
-
-        #endregion Config
     }
 }

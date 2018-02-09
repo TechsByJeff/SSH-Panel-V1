@@ -2,8 +2,6 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SSH_Panel_V1
@@ -88,57 +86,48 @@ namespace SSH_Panel_V1
 
         private void enterCommand(object sender, EventArgs e)
         {
-            string btnName = ((Button)sender).Name;
-
-            if (btnName == "btnReindexAll")
+            switch (((Button)sender).Name)
             {
-                txtBoxInput.Text = command[0];
-                pnlSelectedButton.Location = new Point(0, 94);
-            }
-            else if (btnName == "btnReindexStock")
-            {
-                txtBoxInput.Text = command[1];
-                pnlSelectedButton.Location = new Point(0, 139);
-            }
-            else if (btnName == "btnReindexProduct_Attribute")
-            {
-                txtBoxInput.Text = command[2];
-                pnlSelectedButton.Location = new Point(0, 184);
-            }
-            else if (btnName == "btnReindexCategory_Flat")
-            {
-                txtBoxInput.Text = command[3];
-                pnlSelectedButton.Location = new Point(0, 229);
-            }
-            else if (btnName == "btnReindexCatalogSearchFullText")
-            {
-                txtBoxInput.Text = command[4];
-                pnlSelectedButton.Location = new Point(0, 274);
-            }
-            else if (btnName == "btnReindexProduct_Flat")
-            {
-                txtBoxInput.Text = command[5];
-                pnlSelectedButton.Location = new Point(0, 319);
-            }
-            else if (btnName == "btnReindexProduct_price")
-            {
-                txtBoxInput.Text = command[6];
-                pnlSelectedButton.Location = new Point(0, 364);
-            }
-            else if (btnName == "btnReindexCategory_product")
-            {
-                txtBoxInput.Text = command[7];
-                pnlSelectedButton.Location = new Point(0, 409);
-            }
-            else if (btnName == "btnReindexCatalogUrl")
-            {
-                txtBoxInput.Text = command[8];
-                pnlSelectedButton.Location = new Point(0, 454);
-            }
-            else if (btnName == "btnClearLog")
-            {
-                txtBoxInput.Text = command[9];
-                pnlSelectedButton.Location = new Point(0, 526);
+                case "btnReindexAll":
+                    txtBoxInput.Text = command[0];
+                    pnlSelectedButton.Location = new Point(0, 94);
+                    break;
+                case "btnReindexStock":
+                    txtBoxInput.Text = command[1];
+                    pnlSelectedButton.Location = new Point(0, 139);
+                    break;
+                case "btnReindexProduct_Attribute":
+                    txtBoxInput.Text = command[2];
+                    pnlSelectedButton.Location = new Point(0, 184);
+                    break;
+                case "btnReindexCategory_Flat":
+                    txtBoxInput.Text = command[3];
+                    pnlSelectedButton.Location = new Point(0, 229);
+                    break;
+                case "btnReindexCatalogSearchFullText":
+                    txtBoxInput.Text = command[4];
+                    pnlSelectedButton.Location = new Point(0, 274);
+                    break;
+                case "btnReindexProduct_Flat":
+                    txtBoxInput.Text = command[5];
+                    pnlSelectedButton.Location = new Point(0, 319);
+                    break;
+                case "btnReindexProduct_price":
+                    txtBoxInput.Text = command[6];
+                    pnlSelectedButton.Location = new Point(0, 364);
+                    break;
+                case "btnReindexCategory_product":
+                    txtBoxInput.Text = command[7];
+                    pnlSelectedButton.Location = new Point(0, 409);
+                    break;
+                case "btnReindexCatalogUrl":
+                    txtBoxInput.Text = command[8];
+                    pnlSelectedButton.Location = new Point(0, 454);
+                    break;
+                case "btnClearLog":
+                    txtBoxInput.Text = command[9];
+                    pnlSelectedButton.Location = new Point(0, 526);
+                    break;
             }
         }
 
@@ -148,233 +137,8 @@ namespace SSH_Panel_V1
             lblStatus.ForeColor = Color.Orange;
 
             backgroundWorker.RunWorkerAsync(txtBoxInput.Text);
-            InitializeBackgroundWorker();
         }
 
-        #region Reindex_Tasks
-
-        public async Task ReindexStock()
-        {
-            await Task.Run(() =>
-            {
-                this.Invoke(new Action(() =>
-                {
-                    btnReindexStock.PerformClick();
-                    txtBoxInput.Text = command[1];
-                    ExecuteCommand();
-                }));
-            });
-        }
-
-        public async Task Product_Attribute()
-        {
-            this.Invoke(new Action(() =>
-            {
-                btnReindexProduct_Attribute.PerformClick();
-                txtBoxInput.Text = command[2];
-                ExecuteCommand();
-            }
-          ));
-        }
-
-        public async Task Category_Flat()
-        {
-
-        }
-
-        public async Task FullText()
-        {
-
-        }
-
-        public async Task Product_Flat()
-        {
-
-        }
-
-        public async Task Product_Price()
-        {
-
-        }
-
-        public async Task Category_Product()
-        {
-
-        }
-        public async Task Catalog_Url()
-        {
-            
-        }
-        #endregion tasks
-        private void ReindexAll()
-        {
-            #region Reindex_Task
-
-            //    Task ReindexStock = new Task(delegate
-            //    {
-            //        this.Invoke(new Action(() =>
-            //        {
-            //            btnReindexStock.PerformClick();
-            //            txtBoxInput.Text = command[1];
-            //            ExecuteCommand();
-            //        }
-            //        ));
-            //    });
-            //    ReindexStock.Start();
-            //    ReindexStock.Wait();
-
-            //       Task Product_attribute = new Task(delegate
-            //       {
-            //         this.Invoke(new Action(() =>
-            //         {
-            //             btnReindexProduct_Attribute.PerformClick();
-            //    txtBoxInput.Text = command[2];
-            //    ExecuteCommand();
-            //      }
-            //      ));
-            //         
-
-            //       });
-            //       Product_attribute.Start();
-            //       Product_attribute.Wait();
-            //       Task Category_Flat = new Task(() =>
-            //       {
-            //           this.Invoke(new Action(() =>
-            //           {
-            //               btnReindexCategory_Flat.PerformClick();
-            //               txtBoxInput.Text = command[3];
-            //               ExecuteCommand();
-            //           }
-            //           ));
-            //       });
-            //       Category_Flat.Start();
-            //       Category_Flat.Wait();
-            //    
-            //       Task FullText = new Task(() =>
-            //       {
-            //           this.Invoke(new Action(() =>
-            //           {
-            //               btnReindexCatalogSearchFullText.PerformClick();
-            //               txtBoxInput.Text = command[5];
-            //               ExecuteCommand();
-            //           }
-            //           ));
-            //       });
-            //       FullText.Start();
-            //       FullText.Wait();
-            //       Task Product_Flat = new Task(() =>
-            //       {
-            //           this.Invoke(new Action(() =>
-            //           {
-            //               btnReindexProduct_Flat.PerformClick();
-            //               txtBoxInput.Text = command[5];
-            //               ExecuteCommand();
-            //           }
-            //           ));
-            //       });
-            //       Product_Flat.Start();
-            //       Product_Flat.Wait();
-            //       Task Product_Price = new Task(() =>
-            //       {
-            //           this.Invoke(new Action(() =>
-            //           {
-            //               btnReindexProduct_Flat.PerformClick();
-            //               txtBoxInput.Text = command[6];
-            //               ExecuteCommand();
-            //           }
-            //           ));
-            //       });
-            //       Product_Price.Start();
-            //       Product_Price.Wait();
-            //       Task Category_Product = new Task(() =>
-            //       {
-            //           this.Invoke(new Action(() =>
-            //           {
-            //               btnReindexCategory_product.PerformClick();
-            //               txtBoxInput.Text = command[7];
-            //               ExecuteCommand();
-            //           }
-            //          ));
-            //       });
-            //       Category_Product.Start();
-            //       Category_Product.Wait();
-            //       Task Catalog_Url = new Task(() =>
-            //       {
-            //           this.Invoke(new Action(() =>
-            //           {
-            //               btnReindexCatalogUrl.PerformClick();
-            //               txtBoxInput.Text = command[8];
-            //               ExecuteCommand();
-            //           }
-            //           ));
-            //       });
-            //       Catalog_Url.Start();
-            //       Catalog_Url.Wait();
-
-            #endregion Task
-
-            #region thread
-
-            //   new Thread(() =>
-            //           {
-            //               MessageBox.Show("yolo1");
-            //               btnReindexStock.PerformClick();
-            //               txtBoxInput.Text = command[1];
-            //               ExecuteCommand();
-            //           }).Start();
-            //
-            //   new Thread(() =>
-            //   {
-            //       MessageBox.Show("yolo1");
-            //       btnReindexProduct_Attribute.PerformClick();
-            //       txtBoxInput.Text = command[2];
-            //       ExecuteCommand();
-            //   }).Start();
-
-
-            //   new Thread(() => {
-            //
-            //       this.Invoke(new Action(() =>
-            //       {
-            //           btnReindexStock.PerformClick();
-            //           txtBoxInput.Text = command[1];
-            //           ExecuteCommand();
-            //       }));
-            //   })
-            //   { IsBackground = true }.Start();
-            //
-            //   new Thread(() => {
-            //
-            //       this.Invoke(new Action(() =>
-            //       {
-            //           btnReindexProduct_Attribute.PerformClick();
-            //           txtBoxInput.Text = command[2];
-            //           ExecuteCommand();
-            //       }));
-            //       
-            //   })
-            //   { IsBackground = true }.Start();
-            #endregion thread
-
-            #region Threadpool.QeueUserWorkItem
-
-            //   ThreadPool.QueueUserWorkItem(delegate
-            //   {
-            //       MessageBox.Show("yolo");
-            //       btnReindexStock.PerformClick();
-            //       txtBoxInput.Text = command[1];
-            //       ExecuteCommand();
-            //   });
-            //   ThreadPool.QueueUserWorkItem(delegate
-            //   {
-            //       MessageBox.Show("yolo1");
-            //       btnReindexProduct_Attribute.PerformClick();
-            //       txtBoxInput.Text = command[2];
-            //       ExecuteCommand();
-            //   });
-
-            #endregion Threadpool.QeueUserWorkItem
-        }
         public void ExecuteCommand()
         {
             var cmd = SSH.client.CreateCommand(txtBoxInput.Text);
@@ -393,41 +157,10 @@ namespace SSH_Panel_V1
 
         #region Backgroundworker
 
-        private void InitializeBackgroundWorker()
-        {
-            backgroundWorker = new BackgroundWorker
-            {
-                WorkerReportsProgress = true
-            };
-            backgroundWorker.DoWork += backgroundWorker_DoWork;
-        //    backgroundWorker.ProgressChanged += backgroundWorker_ProgressChanged;
-            backgroundWorker.RunWorkerCompleted += backgroundWorker_RunWorkerCompleted;
-        }
-
         private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (txtBoxInput.Text == command[0])
-            {
-                // new Thread(new ThreadStart(ReindexAll)).Start();
-
-                //Thread t = new Thread(new ThreadStart(ReindexAll));
-                //t.Start();
-                //t.IsBackground = true;
-
-                //  Task.Factory.StartNew(() => ReindexAll());
-
-                ReindexStock();
-                Product_Attribute();
-            }
-            else
-            {
                 ExecuteCommand();
-            }
         }
-
-    //   private void backgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
-    //   {
-    //   }
 
         private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {

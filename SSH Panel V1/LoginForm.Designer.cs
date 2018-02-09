@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dGridSavedUsers = new System.Windows.Forms.DataGridView();
             this.btnSaveUserConfig = new System.Windows.Forms.Button();
             this.btnSshLogin = new System.Windows.Forms.Button();
             this.btnLoadUserConfig = new System.Windows.Forms.Button();
@@ -52,7 +52,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dGridSavedUsers)).BeginInit();
             this.pnlTopBar.SuspendLayout();
             this.pnlBackgroundImage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -61,7 +60,6 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.dGridSavedUsers);
             this.panel1.Controls.Add(this.btnSaveUserConfig);
             this.panel1.Controls.Add(this.btnSshLogin);
             this.panel1.Controls.Add(this.btnLoadUserConfig);
@@ -76,16 +74,8 @@
             this.panel1.Controls.Add(this.txtBoxHost);
             this.panel1.Location = new System.Drawing.Point(33, 93);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(508, 291);
+            this.panel1.Size = new System.Drawing.Size(342, 291);
             this.panel1.TabIndex = 0;
-            // 
-            // dGridSavedUsers
-            // 
-            this.dGridSavedUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dGridSavedUsers.Location = new System.Drawing.Point(292, 73);
-            this.dGridSavedUsers.Name = "dGridSavedUsers";
-            this.dGridSavedUsers.Size = new System.Drawing.Size(203, 169);
-            this.dGridSavedUsers.TabIndex = 6;
             // 
             // btnSaveUserConfig
             // 
@@ -94,7 +84,7 @@
             this.btnSaveUserConfig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSaveUserConfig.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSaveUserConfig.ForeColor = System.Drawing.Color.White;
-            this.btnSaveUserConfig.Location = new System.Drawing.Point(396, 248);
+            this.btnSaveUserConfig.Location = new System.Drawing.Point(226, 246);
             this.btnSaveUserConfig.Name = "btnSaveUserConfig";
             this.btnSaveUserConfig.Size = new System.Drawing.Size(99, 33);
             this.btnSaveUserConfig.TabIndex = 8;
@@ -109,7 +99,7 @@
             this.btnSshLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSshLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSshLogin.ForeColor = System.Drawing.Color.White;
-            this.btnSshLogin.Location = new System.Drawing.Point(12, 248);
+            this.btnSshLogin.Location = new System.Drawing.Point(17, 246);
             this.btnSshLogin.Name = "btnSshLogin";
             this.btnSshLogin.Size = new System.Drawing.Size(99, 33);
             this.btnSshLogin.TabIndex = 5;
@@ -124,7 +114,7 @@
             this.btnLoadUserConfig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLoadUserConfig.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLoadUserConfig.ForeColor = System.Drawing.Color.White;
-            this.btnLoadUserConfig.Location = new System.Drawing.Point(292, 248);
+            this.btnLoadUserConfig.Location = new System.Drawing.Point(122, 246);
             this.btnLoadUserConfig.Name = "btnLoadUserConfig";
             this.btnLoadUserConfig.Size = new System.Drawing.Size(98, 33);
             this.btnLoadUserConfig.TabIndex = 7;
@@ -136,7 +126,7 @@
             // 
             this.lblLoginPortText.AutoSize = true;
             this.lblLoginPortText.BackColor = System.Drawing.Color.Transparent;
-            this.lblLoginPortText.Location = new System.Drawing.Point(240, 57);
+            this.lblLoginPortText.Location = new System.Drawing.Point(266, 57);
             this.lblLoginPortText.Name = "lblLoginPortText";
             this.lblLoginPortText.Size = new System.Drawing.Size(32, 13);
             this.lblLoginPortText.TabIndex = 9;
@@ -146,7 +136,7 @@
             // 
             this.lblLoginHostText.AutoSize = true;
             this.lblLoginHostText.BackColor = System.Drawing.Color.Transparent;
-            this.lblLoginHostText.Location = new System.Drawing.Point(9, 57);
+            this.lblLoginHostText.Location = new System.Drawing.Point(35, 57);
             this.lblLoginHostText.Name = "lblLoginHostText";
             this.lblLoginHostText.Size = new System.Drawing.Size(29, 13);
             this.lblLoginHostText.TabIndex = 10;
@@ -157,7 +147,7 @@
             this.lblLoginText.AutoSize = true;
             this.lblLoginText.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLoginText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.lblLoginText.Location = new System.Drawing.Point(5, 10);
+            this.lblLoginText.Location = new System.Drawing.Point(31, 7);
             this.lblLoginText.Name = "lblLoginText";
             this.lblLoginText.Size = new System.Drawing.Size(101, 37);
             this.lblLoginText.TabIndex = 14;
@@ -166,7 +156,7 @@
             // lblLoginPassText
             // 
             this.lblLoginPassText.AutoSize = true;
-            this.lblLoginPassText.Location = new System.Drawing.Point(9, 177);
+            this.lblLoginPassText.Location = new System.Drawing.Point(35, 177);
             this.lblLoginPassText.Name = "lblLoginPassText";
             this.lblLoginPassText.Size = new System.Drawing.Size(68, 13);
             this.lblLoginPassText.TabIndex = 11;
@@ -175,7 +165,7 @@
             // txtBoxPassword
             // 
             this.txtBoxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxPassword.Location = new System.Drawing.Point(12, 193);
+            this.txtBoxPassword.Location = new System.Drawing.Point(38, 193);
             this.txtBoxPassword.Name = "txtBoxPassword";
             this.txtBoxPassword.PasswordChar = '*';
             this.txtBoxPassword.Size = new System.Drawing.Size(266, 29);
@@ -184,7 +174,7 @@
             // lblServerAddressText
             // 
             this.lblServerAddressText.AutoSize = true;
-            this.lblServerAddressText.Location = new System.Drawing.Point(9, 117);
+            this.lblServerAddressText.Location = new System.Drawing.Point(35, 117);
             this.lblServerAddressText.Name = "lblServerAddressText";
             this.lblServerAddressText.Size = new System.Drawing.Size(77, 13);
             this.lblServerAddressText.TabIndex = 12;
@@ -193,7 +183,7 @@
             // txtBoxServeraddress
             // 
             this.txtBoxServeraddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxServeraddress.Location = new System.Drawing.Point(12, 133);
+            this.txtBoxServeraddress.Location = new System.Drawing.Point(38, 133);
             this.txtBoxServeraddress.Name = "txtBoxServeraddress";
             this.txtBoxServeraddress.Size = new System.Drawing.Size(266, 29);
             this.txtBoxServeraddress.TabIndex = 3;
@@ -201,7 +191,7 @@
             // txtBoxPort
             // 
             this.txtBoxPort.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxPort.Location = new System.Drawing.Point(242, 73);
+            this.txtBoxPort.Location = new System.Drawing.Point(268, 73);
             this.txtBoxPort.Name = "txtBoxPort";
             this.txtBoxPort.Size = new System.Drawing.Size(39, 29);
             this.txtBoxPort.TabIndex = 2;
@@ -209,7 +199,7 @@
             // txtBoxHost
             // 
             this.txtBoxHost.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxHost.Location = new System.Drawing.Point(12, 73);
+            this.txtBoxHost.Location = new System.Drawing.Point(38, 73);
             this.txtBoxHost.Name = "txtBoxHost";
             this.txtBoxHost.Size = new System.Drawing.Size(224, 29);
             this.txtBoxHost.TabIndex = 1;
@@ -220,7 +210,7 @@
             this.lblClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblClose.ForeColor = System.Drawing.Color.White;
-            this.lblClose.Location = new System.Drawing.Point(549, 9);
+            this.lblClose.Location = new System.Drawing.Point(360, 9);
             this.lblClose.Name = "lblClose";
             this.lblClose.Size = new System.Drawing.Size(15, 13);
             this.lblClose.TabIndex = 16;
@@ -233,7 +223,7 @@
             this.lblMin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMin.ForeColor = System.Drawing.Color.White;
-            this.lblMin.Location = new System.Drawing.Point(526, 9);
+            this.lblMin.Location = new System.Drawing.Point(337, 9);
             this.lblMin.Name = "lblMin";
             this.lblMin.Size = new System.Drawing.Size(15, 13);
             this.lblMin.TabIndex = 15;
@@ -250,7 +240,7 @@
             this.pnlTopBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTopBar.Location = new System.Drawing.Point(0, 0);
             this.pnlTopBar.Name = "pnlTopBar";
-            this.pnlTopBar.Size = new System.Drawing.Size(577, 32);
+            this.pnlTopBar.Size = new System.Drawing.Size(409, 32);
             this.pnlTopBar.TabIndex = 17;
             this.pnlTopBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlTopBar_MouseDown);
             this.pnlTopBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlTopBar_MouseMove);
@@ -294,7 +284,7 @@
             this.lblTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.White;
-            this.lblTitle.Location = new System.Drawing.Point(38, 10);
+            this.lblTitle.Location = new System.Drawing.Point(64, 10);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(181, 37);
             this.lblTitle.TabIndex = 27;
@@ -315,16 +305,17 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(215)))), ((int)(((byte)(215)))));
-            this.ClientSize = new System.Drawing.Size(577, 407);
+            this.ClientSize = new System.Drawing.Size(409, 407);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlBackgroundImage);
             this.Controls.Add(this.pnlTopBar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LoginForm";
             this.Text = "LoginForm";
+            this.Load += new System.EventHandler(this.LoginForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dGridSavedUsers)).EndInit();
             this.pnlTopBar.ResumeLayout(false);
             this.pnlTopBar.PerformLayout();
             this.pnlBackgroundImage.ResumeLayout(false);
@@ -347,7 +338,6 @@
         private System.Windows.Forms.TextBox txtBoxServeraddress;
         private System.Windows.Forms.TextBox txtBoxPort;
         private System.Windows.Forms.TextBox txtBoxHost;
-        private System.Windows.Forms.DataGridView dGridSavedUsers;
         private System.Windows.Forms.Button btnSaveUserConfig;
         private System.Windows.Forms.Button btnSshLogin;
         private System.Windows.Forms.Label lblClose;
